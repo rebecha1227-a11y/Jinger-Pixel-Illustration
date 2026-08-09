@@ -35,7 +35,13 @@
 
 ## 安装
 
-### 方式一：npx 一条命令（推荐）
+### 方式一：通用 Skills CLI（推荐）
+
+```bash
+npx skills add rebecha1227-a11y/Jinger-Pixel-Illustration -g -y
+```
+
+### 方式二：本仓库 npx 脚本
 
 会把 Skill 装到本机的 Cursor / Claude Code / Codex skills 目录：
 
@@ -51,13 +57,7 @@ npx github:rebecha1227-a11y/Jinger-Pixel-Illustration --claude
 npx github:rebecha1227-a11y/Jinger-Pixel-Illustration --codex
 ```
 
-也可以用通用 Skills CLI：
-
-```bash
-npx skills add rebecha1227-a11y/Jinger-Pixel-Illustration -g -y
-```
-
-### 方式二：git clone
+### 方式三：git clone
 
 Claude Code / Codex：
 
