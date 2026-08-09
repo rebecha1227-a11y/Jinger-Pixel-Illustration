@@ -389,11 +389,15 @@ confirmed + 当前角色
 
 - `style-references/warm-pixel-scene-16x9.png`：只给**长文封面 / 主题背景**学气质、桌面、边框。正文解释图用白底迷你剧场，不要学这张的高信息密度，也不要学「AI 在图里写大段中文」。
 
+仓库根目录 = Skill 根目录（GitHub 才能显示 README）：
+
 ```text
-jinger-pixel-illustration/
+.
+├── README.md
 ├── SKILL.md
 ├── LICENSE
 ├── LICENSE-ASSETS                 # Jinger 角色图单独授权
+├── PLAN.md
 ├── references/
 │   ├── ip-builder.md              # 照片要求、创建、导入、确认门闩
 │   ├── character-package.md       # 本地角色包结构、状态、切换
@@ -409,11 +413,11 @@ jinger-pixel-illustration/
 │   │   ├── jinger-pixel-bust.png
 │   │   ├── jinger-pixel-fullbody.png
 │   │   └── jinger-turnaround.png
-│   └── fonts/
+│   └── style-lock/
 ├── templates/                     # 仅无生图应急占位，不是目标气质
 ├── scripts/
-│   └── character_registry.py      # register / confirm / activate / list
-└── output/                        # gitignore；或写到 .jinger-pixel-assets/
+│   └── character_registry.py
+└── .jinger-pixel-assets/          # 本地运行数据，不进 GitHub
 ```
 
 用户自己的角色和生成图**默认不进 GitHub**，只留在本地 `.jinger-pixel-assets/`。
@@ -470,7 +474,7 @@ jinger-pixel-illustration/
 
 ## 14. 落地状态（2026-08-09）
 
-v1 已建在 `jinger-pixel-illustration/`，并安装到 `~/.cursor/skills/` 与 `~/.claude/skills/`。  
+v1 Skill 已提到仓库根目录（`README.md` / `SKILL.md` 在根上），方便 GitHub 展示和直接安装。  
 静儿本地 `.jinger-pixel-assets/` 已把 Jinger 登记为 confirmed。
 
 下一步试跑：

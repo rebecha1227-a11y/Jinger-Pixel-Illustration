@@ -5,7 +5,7 @@
 先固定一个角色，再做成两种图：
 
 1. **16:9 长文配图**：必须有封面 + 正文图。封面用暖色简单像素场景，正文默认白底迷你剧场。
-2. **3:4 知识卡片**：奶油米白，人物和文字一起演戏，截图就能发。最多 9 张。
+2. **3:4 知识卡片**：整张由生图模型画成像素场景，人物和短文字一起演戏。最多 9 张。
 
 不要默认两套一起出。没有确认角色之前，不要配图。
 
@@ -15,30 +15,48 @@
 
 - 高清像素
 - 长文 + 知识卡片两种形态
-- 卡片必须人字互动；整张由生图模型画成像素场景，不是 HTML 排版卡
+- 卡片必须人字互动；整张生图像素场景，不是 HTML 排版卡
+
+## 仓库结构
+
+这个仓库**本身就是 Skill**。GitHub 打开就能看到本 README；克隆后目录名改成 `jinger-pixel-illustration` 即可安装。
+
+```text
+.
+├── README.md              ← 你现在看的这份
+├── SKILL.md               ← Agent 入口
+├── LICENSE / LICENSE-ASSETS
+├── PLAN.md                ← 设计笔记
+├── assets/                ← Jinger 画风锁（不是给你当脸用）
+├── references/            ← 创建角色 / 长文 / 卡片细则
+├── scripts/               ← 本地角色包管理
+└── templates/             ← 仅无生图时的应急占位
+```
 
 ## 安装
 
-把本目录放到支持 Agent Skills 的客户端 skills 文件夹，目录名保持 `jinger-pixel-illustration`。
-
-例如 Claude Code / Codex：
+Claude Code / Codex：
 
 ```bash
-cp -R jinger-pixel-illustration "${HOME}/.claude/skills/"
+git clone https://github.com/rebecha1227-a11y/Jinger-Pixel-Illustration.git \
+  "${HOME}/.claude/skills/jinger-pixel-illustration"
 ```
 
 Cursor：
 
 ```bash
-cp -R jinger-pixel-illustration "${HOME}/.cursor/skills/"
+git clone https://github.com/rebecha1227-a11y/Jinger-Pixel-Illustration.git \
+  "${HOME}/.cursor/skills/jinger-pixel-illustration"
 ```
+
+已有文件夹时，也可以把本仓库复制进去，**目录名保持** `jinger-pixel-illustration`。
 
 ## 怎么用
 
 1. 先选这次做：只要长文 / 只要知识卡片 / 两套都要
 2. 还没有角色就选：A 现成 IP 发图，或 B 用自己的照片创建
 3. 看到设定图后，说「确认」才会进入配图
-4. 知识卡片会先出 shot list，你点头再导出
+4. 知识卡片会先出 shot list，你点头再生图
 
 **没有「用 Jinger 体验」入口。** Jinger 只是作者的角色，也用来锁像素密度。请创建你自己的角色。水印用你自己的号，不要印 `@讨厌吃Ginger的Jinger`。
 

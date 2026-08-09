@@ -23,9 +23,9 @@
 
 ## 参考图
 
-- 半身锁脸：`../assets/character/jinger-pixel-bust.png`
-- 全身锁服装：`../assets/character/jinger-pixel-fullbody.png`
-- 三视图只核对角和配件，不锁画风：`../assets/character/jinger-turnaround.png`
+- 半身锁脸：`assets/character/jinger-pixel-bust.png`
+- 全身锁服装：`assets/character/jinger-pixel-fullbody.png`
+- 三视图只核对角和配件，不锁画风：`assets/character/jinger-turnaround.png`
 
 ## 只允许改
 
