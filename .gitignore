@@ -2,5 +2,6 @@
 .jinger-pixel-assets/
 **/__pycache__/
 *.pyc
+node_modules/
 
 output/

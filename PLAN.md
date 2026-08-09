@@ -416,7 +416,9 @@ confirmed + 当前角色
 │   └── style-lock/
 ├── templates/                     # 仅无生图应急占位，不是目标气质
 ├── scripts/
-│   └── character_registry.py
+│   ├── install.mjs                # npx 安装到 Cursor / Claude / Codex
+│   ├── character_registry.py
+│   └── bootstrap_jinger.py        # 仅作者
 └── .jinger-pixel-assets/          # 本地运行数据，不进 GitHub
 ```
 

@@ -29,11 +29,35 @@
 ├── PLAN.md                ← 设计笔记
 ├── assets/                ← Jinger 画风锁（不是给你当脸用）
 ├── references/            ← 创建角色 / 长文 / 卡片细则
-├── scripts/               ← 本地角色包管理
+├── scripts/               ← 安装脚本 + 本地角色包管理
 └── templates/             ← 仅无生图时的应急占位
 ```
 
 ## 安装
+
+### 方式一：npx 一条命令（推荐）
+
+会把 Skill 装到本机的 Cursor / Claude Code / Codex skills 目录：
+
+```bash
+npx github:rebecha1227-a11y/Jinger-Pixel-Illustration
+```
+
+只装其中一个客户端：
+
+```bash
+npx github:rebecha1227-a11y/Jinger-Pixel-Illustration --cursor
+npx github:rebecha1227-a11y/Jinger-Pixel-Illustration --claude
+npx github:rebecha1227-a11y/Jinger-Pixel-Illustration --codex
+```
+
+也可以用通用 Skills CLI：
+
+```bash
+npx skills add rebecha1227-a11y/Jinger-Pixel-Illustration -g -y
+```
+
+### 方式二：git clone
 
 Claude Code / Codex：
 

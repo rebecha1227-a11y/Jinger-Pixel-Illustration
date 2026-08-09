@@ -1,0 +1,34 @@
+{
+  "name": "jinger-pixel-illustration",
+  "version": "1.0.0",
+  "description": "Install the Jinger Pixel Illustration agent skill (16:9 article art + 3:4 knowledge cards).",
+  "bin": {
+    "jinger-pixel-illustration": "./scripts/install.mjs"
+  },
+  "files": [
+    "SKILL.md",
+    "LICENSE",
+    "LICENSE-ASSETS",
+    "README.md",
+    "PLAN.md",
+    "agents",
+    "assets",
+    "references",
+    "scripts",
+    "templates"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rebecha1227-a11y/Jinger-Pixel-Illustration.git"
+  },
+  "keywords": [
+    "agent-skills",
+    "pixel-art",
+    "illustration",
+    "jinger"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}
