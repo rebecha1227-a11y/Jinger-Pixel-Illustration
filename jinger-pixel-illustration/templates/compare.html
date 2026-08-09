@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>compare</title>
+  <link rel="stylesheet" href="card-base.css" />
+  <style>
+    .page { --accent: {{ACCENT}}; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 48px; min-height: 720px; }
+    .bad { border-color: var(--bad); }
+    .good { border-color: var(--ok); }
+    .char { height: 48%; right: 8%; bottom: 80px; }
+  </style>
+</head>
+<body>
+  <article class="page">
+    <div class="dotgrid"></div>
+    <h1 class="zh-title">{{ZH_TITLE}}</h1>
+    <p class="sub">{{SUB}}</p>
+    <div class="grid">
+      <div class="block bad">
+        <h2>容易错</h2>
+        {{LEFT}}
+      </div>
+      <div class="block good">
+        <h2>更好</h2>
+        {{RIGHT}}
+      </div>
+    </div>
+    <img class="char" src="{{CHAR_IMG}}" alt="" />
+    <div class="watermark">{{WATERMARK}}</div>
+  </article>
+</body>
+</html>

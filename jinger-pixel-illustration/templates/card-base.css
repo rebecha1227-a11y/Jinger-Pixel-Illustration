@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;700&family=Noto+Sans+SC:wght@500;700;900&display=swap");
+
+:root {
+  --cream: #f4ead8;
+  --cream-deep: #e8d7bc;
+  --ink: #2a2218;
+  --muted: #7a6a58;
+  --frame: #3b2a1c;
+  --accent: #2f4f7a;
+  --ok: #2f6b4f;
+  --bad: #a33b2a;
+  --watermark: rgba(42, 34, 24, 0.38);
+  --font-pixel: "Pixelify Sans", "Press Start 2P", monospace;
+  --font-cn: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #cfc3b0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 24px;
+}
+
+.page {
+  width: 1242px;
+  height: 1656px;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255,255,255,0.35), transparent 40%),
+    var(--cream);
+  color: var(--ink);
+  font-family: var(--font-cn);
+  border: 18px solid var(--frame);
+  box-shadow: 0 18px 0 rgba(59, 42, 28, 0.18);
+  position: relative;
+  overflow: hidden;
+  padding: 72px 64px 88px;
+}
+
+.page::before {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border: 4px solid rgba(59, 42, 28, 0.18);
+  pointer-events: none;
+}
+
+.en-title {
+  font-family: var(--font-pixel);
+  font-size: 92px;
+  line-height: 1.05;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  max-width: 78%;
+}
+
+.zh-title {
+  font-weight: 900;
+  font-size: 72px;
+  line-height: 1.2;
+  margin-top: 18px;
+  max-width: 78%;
+}
+
+.sub {
+  margin-top: 20px;
+  font-size: 36px;
+  line-height: 1.45;
+  color: var(--muted);
+  max-width: 70%;
+}
+
+.block {
+  background: rgba(255, 252, 246, 0.88);
+  border: 4px solid var(--frame);
+  border-radius: 18px;
+  padding: 28px 32px;
+}
+
+.block h2 {
+  font-size: 40px;
+  margin-bottom: 16px;
+}
+
+.block li,
+.block p {
+  font-size: 34px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.block ol,
+.block ul {
+  padding-left: 1.2em;
+  display: grid;
+  gap: 14px;
+}
+
+.watermark {
+  position: absolute;
+  right: 36px;
+  bottom: 28px;
+  font-size: 22px;
+  color: var(--watermark);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  z-index: 5;
+}
+
+.char {
+  position: absolute;
+  right: -40px;
+  bottom: 70px;
+  height: 62%;
+  z-index: 2;
+  filter: drop-shadow(8px 12px 0 rgba(59, 42, 28, 0.12));
+  pointer-events: none;
+}
+
+.sign {
+  display: inline-block;
+  background: #fff8ee;
+  border: 4px solid var(--frame);
+  padding: 10px 16px;
+  font-family: var(--font-pixel);
+  font-size: 28px;
+  transform: rotate(-4deg);
+}
+
+.dotgrid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(59, 42, 28, 0.07) 2px, transparent 2px);
+  background-size: 28px 28px;
+  pointer-events: none;
+}

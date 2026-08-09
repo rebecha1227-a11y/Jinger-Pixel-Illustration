@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>cover</title>
+  <link rel="stylesheet" href="card-base.css" />
+  <style>
+    .page { --accent: {{ACCENT}}; }
+    .char { height: 70%; right: -20px; bottom: 48px; }
+    .hook { margin-top: 48px; max-width: 62%; }
+  </style>
+</head>
+<body>
+  <article class="page">
+    <div class="dotgrid"></div>
+    <div class="en-title">{{EN_TITLE}}</div>
+    <h1 class="zh-title">{{ZH_TITLE}}</h1>
+    <p class="sub">{{SUB}}</p>
+    <div class="hook">
+      <span class="sign">{{SIGN}}</span>
+    </div>
+    <img class="char" src="{{CHAR_IMG}}" alt="" />
+    <div class="watermark">{{WATERMARK}}</div>
+  </article>
+</body>
+</html>

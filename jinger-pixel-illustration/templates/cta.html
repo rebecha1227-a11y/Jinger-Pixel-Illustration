@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>cta</title>
+  <link rel="stylesheet" href="card-base.css" />
+  <style>
+    .page { --accent: {{ACCENT}}; }
+    .char { height: 60%; right: -30px; bottom: 60px; }
+    .cta {
+      margin-top: 56px;
+      max-width: 62%;
+      background: var(--accent);
+      color: #fff8ee;
+      border: 4px solid var(--frame);
+      border-radius: 18px;
+      padding: 36px 40px;
+    }
+    .cta h2 { font-size: 48px; margin-bottom: 16px; color: #fff8ee; }
+    .cta p, .cta li { font-size: 34px; line-height: 1.5; color: #fff8ee; }
+  </style>
+</head>
+<body>
+  <article class="page">
+    <div class="dotgrid"></div>
+    <div class="en-title">{{EN_TITLE}}</div>
+    <h1 class="zh-title">{{ZH_TITLE}}</h1>
+    <p class="sub">{{SUB}}</p>
+    <div class="cta">
+      <h2>现在就试</h2>
+      {{ITEMS}}
+    </div>
+    <img class="char" src="{{CHAR_IMG}}" alt="" />
+    <div class="watermark">{{WATERMARK}}</div>
+  </article>
+</body>
+</html>
