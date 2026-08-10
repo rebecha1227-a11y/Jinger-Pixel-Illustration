@@ -144,6 +144,66 @@ If the character were removed, the picture would not make sense.
 Almost no in-image text. No watermark. No photoreal scene.
 ```
 
+## 流程说明图 16:9 / 3:4（怎么用、你会得到什么）
+
+不要用迷你剧场模板。先读 `explainer-workflow.md`。
+
+```text
+[16:9 or 3:4] HD pixel instructional illustration, warm cream paper / light wood / cork board, optional dark-brown pixel frame. Not a blank white mini-theater. Not a PPT SmartArt. Not an HTML poster.
+[CHARACTER LOCK]
+[PIXEL STYLE LOCK]
+
+PAGE JOB: explain a process or inventory so a new user understands it at a glance.
+TITLE (large, readable): [e.g. 最终你会拿到什么？ / PIXEL IP怎么用]
+LAYOUT: numbered steps ①②③④ top-to-bottom OR left-to-right with LARGE pixel arrows connecting them.
+
+EACH STEP MUST INCLUDE:
+- a number
+- a complete short Chinese phrase (6–16 characters), NOT a 2-character crumb like 素材/确认/出图
+- its OWN visual cell (1:1 mapping). Never send three arrows into one collage.
+- the same locked character doing a DIFFERENT action with a DIFFERENT prop
+- a large nameplate on the key object, used only once
+
+SHAPE LOCK:
+- character anchor = full-body on plain white, not a scene
+- turnaround = front + side + back mini figures in a separate cell
+- 16:9 set = WIDE landscape frames (cover scene + 1–2 body frames), never a square headshot, never a closed book
+- 3:4 card = TALL card with the character + short labels visible inside
+- user photo/meme input = looks like a photo or sticker, NOT an already-finished pixel portrait
+
+FORBIDDEN POSES: standing still pointing at a board; identical lower body across clones; thumbs-up with no prop; holding an unrelated landscape photo.
+
+TEXT: large pixel lettering. 5–12 text blocks max. Each phrase once. No paragraphs. No tiny unreadable Chinese. No watermark. No "豆包AI生成".
+
+If this is "what you provide vs what you get":
+LEFT nameplates (once each): 真人照/宠物/表情包 , 文章或观点 , Logo或场景（可选）
+RIGHT nameplates (once each): 像素角色全身+半身 , 16:9封面+正文 , 3:4知识卡片
+Put one big arrow in the middle. Do not duplicate any label.
+```
+
+提供 vs 得到 示例短句（可直接用，不要再缩成两个字）：
+
+```text
+①你提供：真人照/宠物/表情包
+②你提供：文章或知识观点
+③你提供：Logo或场景描述（可选）
+→
+④你得到：锁定的像素角色
+⑤你得到：16:9封面+正文
+⑥你得到：3:4知识卡片
+⑦同一角色下一篇还能用
+```
+
+「最终你会拿到什么」示例短句：
+
+```text
+①1张角色锚点
+②可选三视图
+③16:9长文套图
+④3:4知识卡片
+⑤换主题还能继续用
+```
+
 ## 知识卡片 3:4（整张一次画完）
 
 ```text
@@ -155,12 +215,13 @@ Warm simple pixel scene: cream paper / light wood desk / cork board, optional da
 PAGE TYPE: [cover / pain / concept / steps / compare / pitfall / cta]
 ONE IDEA: [one idea]
 VISUAL METAPHOR: [metaphor]
-CHARACTER ACTION: [action inside the scene]
+CHARACTER ACTION: a real doing-pose with props, not standing and pointing at a board.
 PROPS: [1–3]
 
-In-image text only, short and exact:
+In-image text, short complete phrases, large enough to read:
 [EN short title if any]
-[ZH labels, each 2–8 characters, at most 6–8 labels]
+[ZH phrases, each 6–14 characters; steps/compare pages MUST be numbered ①②③]
+At most 8 phrases. No 2-character-only crumbs on steps pages.
 
 Readable Chinese, no paragraphs, no tiny essay, no watermark, no PPT, no magazine collage.
 ```

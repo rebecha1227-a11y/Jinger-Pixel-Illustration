@@ -59,9 +59,11 @@ B. 我有参考素材，想做成高清像素角色
 
 ### 第三步：出图
 
-- 长文 → 读 `references/article-workflow.md` + `style-dna.md` + `concept-visual-language.md` + `prompt-templates.md`
-- 知识卡片 → 读 `references/card-workflow.md` + `card-templates.md` + `style-dna.md` + `concept-visual-language.md` + `prompt-templates.md`
-- 每张先生一个短 visual plan，再拼 prompt；生成后过 `references/qa-checklist.md`
+读用户要表达的内容，想清楚**这一张要让人看懂什么**，把构图、动作、字写进 prompt，交给生图模型去画。不要先套一个「默认版式」。
+
+`prompt-templates.md` 里是一些**写得好的现成句子**（封面、迷你剧场、动作序列、知识卡、清单介绍页），按这一张的内容去取用、改写，不是让用户或 Agent 先选模式再出图。
+
+细则按成品翻：长文 `article-workflow.md`；知识卡 `card-workflow.md`；若这一张本身就是在清点步骤/成品，可参考 `explainer-workflow.md` 的排法写进同一条 prompt。再读 `style-dna.md`。每张先写 visual plan，再拼 prompt，过后 `qa-checklist.md`。
 
 ## 硬规则
 
@@ -69,7 +71,7 @@ B. 我有参考素材，想做成高清像素角色
 - 每个角色确认后锁死自己的记忆点（神态、剪影、标志色/花纹/服装），第一版不换装、不改认不出。
 - 长文一套必须有 **1 张封面 + 若干正文图**。封面 = 暖色简单像素场景；正文 = 默认白底迷你剧场。
 - 知识卡片默认 6–8 张，最多 9 张；先出 shot list 等人确认。**整张由生图模型画成像素场景**，角色要生活在画面里和短文字互动，不要做成「HTML 排版 + 角色贴图」。
-- 卡片和封面里只允许短标签（中文约 2–8 字，英文大标题短词）。不要往图里塞段落。
+- 图内文字按这一张需要来写进 prompt：演戏/一个观点就少字；步骤清单就把编号短句写清楚。不要段落，也不要该讲明白时只剩两个字。
 - 水印文案来自**当前角色** `character-spec`，不要套用示范角色的水印号。水印后盖，不让模型画。
 - 无生图能力时诚实说明，只交 prompt 和保存计划。`templates/` 里的 HTML 只是应急预览，**不是目标气质**。
 - 默认不改用户 Markdown；只有用户明确说「插入」才写入，并先备份。
