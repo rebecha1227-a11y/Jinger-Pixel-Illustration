@@ -42,8 +42,6 @@
 └── templates/             ← 仅无生图时的应急占位
 ```
 
-你自己的照片、角色包、成图放本地 `.jinger-pixel-assets/`（已 gitignore），不要提交到本仓库。`docs/how-to/` 与 `examples/ania/` 是给 README / 示例看的例外。
-
 ## 安装
 
 ### 方式一：通用 Skills CLI（推荐）
