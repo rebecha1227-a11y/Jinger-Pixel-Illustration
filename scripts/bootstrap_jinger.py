@@ -39,7 +39,7 @@ def main() -> int:
     sheet = SKILL_ROOT / "assets" / "character" / "jinger-turnaround.png"
     clean = SKILL_ROOT / "assets" / "character" / "jinger-pixel-fullbody.png"
     bust = SKILL_ROOT / "assets" / "character" / "jinger-pixel-bust.png"
-    spec = SKILL_ROOT / "references" / "character-spec.md"
+    spec = SKILL_ROOT / "examples" / "jinger" / "character-spec.md"
     for path in (registry, sheet, clean, bust, spec):
         if not path.is_file():
             print(f"error: missing {path}", file=sys.stderr)

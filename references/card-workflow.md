@@ -1,6 +1,6 @@
 # 知识卡片工作流
 
-前提：当前角色 `confirmed`。先读 `style-dna.md`、`card-templates.md`、当前角色 `character-spec.md`。
+前提：当前角色 `confirmed`。先读 `style-dna.md`、`card-templates.md`、`concept-visual-language.md`、当前角色 `character-spec.md`。
 
 目标气质对齐 `assets/style-lock/warm-pixel-scene-16x9.png`：角色站在暖色像素场景里，和短文字块一起演戏。  
 **不是**小红书那种 HTML 杂志卡。`templates/` 只在没有生图模型时应急，不要当成品标准。
@@ -17,6 +17,7 @@
 - 中文标题（封面/强调页可另写短英文像素标题）
 - 这一页只讲什么
 - 角色在场景里做什么（拿牌、靠着木牌、推开错误一侧、把 CTA 递出来……）
+- 这一页的 visual plan：主张 / 比喻 / 动作
 - 画面里允许出现的短文字（每条 2–8 字，一张图不超过 6–8 条）
 - 1–3 个场景物件
 
@@ -25,7 +26,7 @@
 ## 确认后（有生图模型）
 
 1. 每张单独生成一张完整的 3:4 高清像素卡（角色 + 场景 + 短文字一次画完）。
-2. 用 `prompt-templates.md` 里的知识卡片骨架；style-lock 用暖色场景图 + 角色干净参考图。
+2. 用 `prompt-templates.md` 按模块组装知识卡片 prompt；style-lock 用暖色场景图 + 角色干净参考图。
 3. 生成后**只后盖水印**（右下角，当前角色文案）。不要再套 HTML 排版。
 4. 中文写错、多字、长段落：重画该张或只修那几处标签，不要改走 HTML 方案。
 5. 过 `qa-checklist.md`。

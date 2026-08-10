@@ -81,10 +81,22 @@ def resolved_manifest(root: Path, slug: str, allow_draft: bool = False) -> dict:
     if manifest.get("status") != "confirmed" and not allow_draft:
         raise ValueError(f"Character '{slug}' is not confirmed")
     assets = manifest.get("assets", {})
-    for key in ("sheet", "clean_reference", "bust", "spec"):
+    required = ("clean_reference", "bust", "spec")
+    optional = ("sheet",)
+    for key in required:
         value = assets.get(key)
         if not value:
             raise ValueError(f"Manifest is missing assets.{key}")
+        path = Path(value)
+        if not path.is_absolute():
+            path = directory / path
+        if not path.is_file():
+            raise FileNotFoundError(f"Missing {key}: {path}")
+        assets[key] = str(path.resolve())
+    for key in optional:
+        value = assets.get(key)
+        if not value:
+            continue
         path = Path(value)
         if not path.is_absolute():
             path = directory / path
@@ -103,12 +115,23 @@ def command_register(args: argparse.Namespace) -> None:
     old_path = directory / MANIFEST_NAME
     old = load_json(old_path) if old_path.exists() else {}
 
-    sheet = copy_versioned(Path(args.sheet), directory, "character-sheet")
     clean = copy_versioned(Path(args.clean_reference), directory, "character-reference-clean")
     bust = copy_versioned(Path(args.bust), directory, "character-bust")
     spec = copy_versioned(Path(args.spec), directory, "character-spec", ".md")
+    sheet_name = None
+    if args.sheet:
+        sheet_name = copy_versioned(Path(args.sheet), directory, "character-sheet").name
+    elif old.get("assets", {}).get("sheet"):
+        sheet_name = old["assets"]["sheet"]
 
     now = utc_now()
+    assets = {
+        "clean_reference": clean.name,
+        "bust": bust.name,
+        "spec": spec.name,
+    }
+    if sheet_name:
+        assets["sheet"] = sheet_name
     manifest = {
         "schema_version": 1,
         "slug": args.slug,
@@ -118,12 +141,7 @@ def command_register(args: argparse.Namespace) -> None:
         "created_at": old.get("created_at", now),
         "updated_at": now,
         "confirmed_at": None,
-        "assets": {
-            "sheet": sheet.name,
-            "clean_reference": clean.name,
-            "bust": bust.name,
-            "spec": spec.name,
-        },
+        "assets": assets,
     }
     write_json(old_path, manifest)
     print(json.dumps(resolved_manifest(root, args.slug, allow_draft=True), ensure_ascii=False, indent=2))
@@ -149,6 +167,20 @@ def command_confirm(args: argparse.Namespace) -> None:
         },
     )
     print(json.dumps(resolved_manifest(root, args.slug), ensure_ascii=False, indent=2))
+
+
+def command_attach_sheet(args: argparse.Namespace) -> None:
+    root = Path(args.root).expanduser().resolve()
+    directory = character_dir(root, args.slug)
+    path = directory / MANIFEST_NAME
+    stored = load_json(path)
+    sheet = copy_versioned(Path(args.sheet), directory, "character-sheet")
+    assets = dict(stored.get("assets") or {})
+    assets["sheet"] = sheet.name
+    stored["assets"] = assets
+    stored["updated_at"] = utc_now()
+    write_json(path, stored)
+    print(json.dumps(resolved_manifest(root, args.slug, allow_draft=True), ensure_ascii=False, indent=2))
 
 
 def command_activate(args: argparse.Namespace) -> None:
@@ -217,11 +249,17 @@ def build_parser() -> argparse.ArgumentParser:
     register.add_argument("--root", required=True)
     register.add_argument("--slug", required=True)
     register.add_argument("--name", required=True)
-    register.add_argument("--sheet", required=True)
+    register.add_argument("--sheet", help="Optional turnaround / character sheet")
     register.add_argument("--clean-reference", required=True)
     register.add_argument("--bust", required=True)
     register.add_argument("--spec", required=True)
     register.set_defaults(func=command_register)
+
+    attach = subparsers.add_parser("attach-sheet", help="Add or replace an optional turnaround sheet without changing status")
+    attach.add_argument("--root", required=True)
+    attach.add_argument("--slug", required=True)
+    attach.add_argument("--sheet", required=True)
+    attach.set_defaults(func=command_attach_sheet)
 
     confirm = subparsers.add_parser("confirm", help="Confirm a draft character and make it active")
     confirm.add_argument("--root", required=True)

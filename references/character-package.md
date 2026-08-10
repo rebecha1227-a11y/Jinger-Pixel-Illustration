@@ -14,7 +14,7 @@
 ~/.jinger-pixel-assets/
 ```
 
-用户指定目录时听用户。不要把 Skill 安装目录当运行目录，不要把用户照片或生成角色提交到 GitHub。
+用户指定目录时听用户。不要把 Skill 安装目录当运行目录，不要把用户参考素材或生成角色提交到 GitHub。
 
 ## 结构
 
@@ -24,10 +24,10 @@
 ├── characters/
 │   └── <slug>/
 │       ├── character.json
-│       ├── character-sheet.png
-│       ├── character-reference-clean.png
-│       ├── character-bust.png
-│       ├── character-spec.md
+│       ├── character-reference-clean.png   ← 必须，主身份锚点（默认全身；表情包可为头身）
+│       ├── character-bust.png              ← 必须，半身/头身特写
+│       ├── character-spec.md               ← 必须
+│       ├── character-sheet.png             ← 可选三视图
 │       └── *-v2.png
 ├── illustrations/
 │   └── <article-slug>/
@@ -41,6 +41,8 @@
 
 `slug` 用小写英文 kebab-case。中文名放在 manifest 的 `name`。
 
+公开仓库的 `examples/` 只是示范，不是运行时角色包。
+
 ## 状态
 
 - `draft`：已生成或修订，等待确认；不能配图，不能激活
@@ -48,27 +50,38 @@
 
 「看起来不错」不算确认。要听到「确认 / 定稿 / 就用这个」。
 
+没有三视图也可以 confirmed。
+
 ## 脚本
 
 在 Skill 根目录运行。`<runtime-root>` 是 `.jinger-pixel-assets`。
 
-注册草稿：
+注册草稿（`--sheet` 可选）：
 
 ```bash
 python3 scripts/character_registry.py register \
   --root <runtime-root> \
-  --slug jinger \
-  --name "Jinger" \
-  --sheet path/to/character-sheet.png \
+  --slug my-character \
+  --name "角色名" \
   --clean-reference path/to/character-reference-clean.png \
   --bust path/to/character-bust.png \
-  --spec path/to/character-spec.md
+  --spec path/to/character-spec.md \
+  [--sheet path/to/character-sheet.png]
+```
+
+确认后补三视图：
+
+```bash
+python3 scripts/character_registry.py attach-sheet \
+  --root <runtime-root> \
+  --slug my-character \
+  --sheet path/to/character-sheet.png
 ```
 
 确认并设为当前角色：
 
 ```bash
-python3 scripts/character_registry.py confirm --root <runtime-root> --slug jinger
+python3 scripts/character_registry.py confirm --root <runtime-root> --slug my-character
 ```
 
 列出 / 切换 / 查看：
@@ -86,7 +99,7 @@ python3 scripts/character_registry.py resolve --root <runtime-root>
 仅静儿本人可运行：
 
 ```bash
-python3 scripts/bootstrap_jinger.py --root <runtime-root>
+python3 scripts/bootstrap_jinger.py --i-am-the-author --root <runtime-root>
 ```
 
 这会把仓库内 Jinger 资产登记为 confirmed。开源用户禁止使用。
