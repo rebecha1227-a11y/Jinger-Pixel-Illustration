@@ -28,6 +28,7 @@
 ├── LICENSE / LICENSE-ASSETS
 ├── PLAN.md                ← 设计笔记
 ├── assets/                ← Jinger 画风锁 + 作者示范图（不是给你当脸用）
+├── docs/how-to/           ← README「怎么用」流程说明图
 ├── examples/
 │   ├── jinger/            ← 作者示范设定（配合 assets/）
 │   └── example-character/ ← 虚构 Mina 填写示例（暂无图）
@@ -36,7 +37,7 @@
 └── templates/             ← 仅无生图时的应急占位
 ```
 
-你自己的照片、角色包、成图放本地 `.jinger-pixel-assets/`（已 gitignore），不要提交到本仓库。
+你自己的照片、角色包、成图放本地 `.jinger-pixel-assets/`（已 gitignore），不要提交到本仓库。`docs/how-to/` 里是给 README 看的流程说明图，例外。
 
 ## 安装
 
@@ -84,6 +85,14 @@ git clone https://github.com/rebecha1227-a11y/Jinger-Pixel-Illustration.git \
 
 先说一句：**没有「试用示范角色」入口。** 仓库里的 Jinger 图是作者示范 + 画风锁。请创建你自己的角色，水印用你自己的号。
 
+![封面：固定像素角色，配长文或知识卡](docs/how-to/00-cover.png)
+
+### 为什么要先固定角色
+
+每次换脸，读者记不住；固定成同一套像素 IP 后，长文和知识卡才像一个人写的。
+
+![不固定 vs 固定后](docs/how-to/01-pain.png)
+
 ### 你要提供什么
 
 至少准备一类「画谁」的素材，再加这次要配的内容：
@@ -103,9 +112,11 @@ git clone https://github.com/rebecha1227-a11y/Jinger-Pixel-Illustration.git \
 | 成品 | 规格 |
 |---|---|
 | 像素角色包 | 干净全身（或头身锚点）+ 半身/头身 + 设定文字；三视图可选 |
-| 16:9 长文套图 | **1 张封面 + 若干正文图**。封面是暖色简单像素场景；正文是白底迷你剧场 |
+| 16:9 长文套图 | **1 张封面 + 若干正文图**。封面是暖色简单像素场景；正文按这一张要讲什么来画（迷你剧场或说明图） |
 | 3:4 知识卡片 | 默认 6–8 张，最多 9 张。整张像素场景，角色和短文字一起演戏 |
 | 水印 | 每张右下角后盖，文案来自你的角色设定，不是 AI 画上去的 |
+
+![你提供什么，能得到什么](docs/how-to/03-give-get.png)
 
 同一套像素角色可以反复给下一篇文章 / 下一套卡片用。
 
@@ -120,6 +131,12 @@ git clone https://github.com/rebecha1227-a11y/Jinger-Pixel-Illustration.git \
    - 长文：直接按文章生成封面 + 正文图  
    - 知识卡片：先出 shot list，你点头再生图
 5. **可复用**：下次换文章或换主题，还是同一个像素角色。
+
+![怎么用：四步](docs/how-to/04-four-steps.png)
+
+![确认门闩：说确认才配图](docs/how-to/02-lock-first.png)
+
+![同一角色，换主题还能用](docs/how-to/05-reusable.png)
 
 ## 无生图时
 

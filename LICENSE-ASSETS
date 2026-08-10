@@ -19,7 +19,8 @@ You may NOT:
 - enable Jinger as the default character for other users of this skill
 
 Your own photos, generated characters, article illustrations, and knowledge
-cards stay yours. Do not commit them to this repository.
+cards stay yours. Do not commit them to this repository, except workflow demo
+images under `docs/how-to/` that illustrate how this skill works.
 
 The fictional example character Mina under examples/example-character/ is not
 a likeness of the author and is provided only as a template-filling sample.
