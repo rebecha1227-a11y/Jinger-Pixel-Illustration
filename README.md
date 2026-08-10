@@ -36,7 +36,7 @@
 ├── docs/how-to/           ← README「怎么用」流程说明图
 ├── examples/
 │   ├── jinger/            ← 作者示范设定（配合 assets/）
-│   └── ania/              ← 公开角色包示例（全身 / 半身 / 三视图 + 设定）
+│   └── ania/              ← 公开角色包示例（非商用，仅作示例参考）
 ├── references/            ← 创建角色 / 概念→画面 / 长文 / 卡片细则
 ├── scripts/               ← 安装脚本 + 本地角色包管理
 └── templates/             ← 仅无生图时的应急占位
@@ -129,6 +129,9 @@ git clone https://github.com/rebecha1227-a11y/Jinger-Pixel-Illustration.git \
 2. **定角色**  
    - A. 已有现成形象 → 发图  
    - B. 用参考素材创建 → 真人照、宠物、表情包、动漫、品牌 IP 都可以  
+
+![定角色：原素材 → 像素角色](docs/how-to/02-create-character.png)
+
 3. **确认门闩**：先看干净全身 + 半身。说「确认」才进入配图。三视图/设定板是可选项，不要也可以。
 4. **出图**  
    - 长文：直接按文章生成封面 + 正文图  
@@ -143,7 +146,8 @@ git clone https://github.com/rebecha1227-a11y/Jinger-Pixel-Illustration.git \
 
 ### 角色包长什么样
 
-公开示例见 [`examples/ania/`](examples/ania/)（全身 / 半身 / 三视图 + 设定）。仓库里的 Jinger 图只作画风锁与作者示范，请创建你自己的角色。
+公开示例见 [`examples/ania/`](examples/ania/)（全身 / 半身 / 三视图 + 设定）。  
+Ania 来自漫画/二次元参考造型，**非商用，仅作为公开示例给模型与填写模板参考**；请创建你自己有权使用的 IP，不要把 Ania 当成默认试用脸。仓库里的 Jinger 图只作画风锁与作者示范。
 
 ![Ania 干净全身](examples/ania/character-reference-clean.png)
 
@@ -157,7 +161,7 @@ Skill 会交出完整 prompt、参考图路径和水印计划，不会假装图�
 
 - 工作流、脚本、模板、文档：MIT，见 [LICENSE](LICENSE)
 - Jinger 角色图与设定：不在 MIT 内，见 [LICENSE-ASSETS](LICENSE-ASSETS)
-- `examples/ania/` 为公开填写示例；请创建你自己的 IP，不要把 Ania 当成默认试用脸
+- `examples/ania/` 为公开填写示例（漫画/二次元参考造型，**非商用，仅作示例与模型参考**）；请创建你自己有权使用的 IP，不要把 Ania 当成默认试用脸
 
 ## 致谢
 
