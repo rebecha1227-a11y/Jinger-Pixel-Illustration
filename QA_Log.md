@@ -1,5 +1,46 @@
 # QA Log
 
+## 2026-08-11
+
+### 问题
+`01-pain.png` 也可作长文正文画风气质锁；画图时角色来源要全身+半身+sheet+spec 全参照；画完要有审核步骤对照角色包细节（已有 checklist）。
+
+### 答案核心
+- 新增 `assets/style-lock/article-body-editorial-16x9.png`（来自该 01-pain）。
+- 生图：clean + bust +（若有）sheet + spec 全量参照；禁止只塞全身。
+- `qa-checklist.md` 顶部强制「角色包对照审核」；article/card 工作流写明审核门闩。
+
+### 相关引用
+- `references/style-dna.md`、`article-workflow.md`、`qa-checklist.md`、`prompt-templates.md`
+
+## 2026-08-11
+
+### 问题
+当前知识卡有问题；满意样例是 gpt-image-2 直接生成的编辑式信息图。GPT 建议很像独立 skill，但静儿要求：仍是一套 skill 里的两套出图；相关 prompt/拆解流程可独立成 reference。
+
+### 答案核心
+- 不拆独立 skill；知识卡升级为「固定 Style + 可变 Layout + 内容分析」。
+- 新增：`card-content-analysis.md` / `card-style-system.md` / `card-layout-system.md` / `card-character-system.md`。
+- style-lock：`assets/style-lock/knowledge-card-editorial-3x4.png`；纯色底、人小、讲解者互动、像素从零构建。
+- Mode A 默认全生成；Mode B 程序排字仅可选，暂不捆绑。
+
+### 相关引用
+- `references/card-workflow.md`、`prompt-templates.md`、`SKILL.md`
+
+## 2026-08-11
+
+### 问题
+更好的制作 skill 方式是：先和 AI 跑完一轮完整工作流，把踩坑、流程、需求、触发、产出都明确后，再说「沉淀成 skill」；从 0 制作和从已有工作流沉淀两种都可以。
+
+### 答案核心
+- 两条路都成立：A 从 0 起草（结构干净、上手快）；B 跑通后再沉淀（更贴实用，规则来自翻车现场）。
+- 可接力：A 起骨架 → 真用 → B 回写；或直接 B。
+- 已写入知识卡长文第六/七节，并改 shot list 第 07/08 页。
+
+### 相关引用
+- `.jinger-pixel-assets/cards/how-to-make-skill/article.md`
+- `.jinger-pixel-assets/cards/how-to-make-skill/shotlist.md`
+
 ## 2026-08-10
 
 ### 问题

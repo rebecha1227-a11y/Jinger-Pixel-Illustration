@@ -52,19 +52,21 @@
 
 ---
 
-## 参考图优先级
+## 参考图怎么用
 
-冲突时按此顺序，**画风锁不能盖过身份**：
+出图时**全部可用资产都要参照**，不是只看一张全身：
 
-1. 干净全身 `character-reference-clean`
-2. 三视图 `character-sheet`（如果有；可选）
-3. 半身 `character-bust`
-4. 本文件文字设定
-5. 捆绑画风锁图（`assets/character/` + `assets/style-lock/`，只学颗粒和密度）
+1. 干净全身 `character-reference-clean` — 比例与整套服装  
+2. 半身 `character-bust` — 脸/发型/头配件（必须）  
+3. 设定板 `character-sheet`（如果有）— 三视图、配饰特写、配色  
+4. 本文件文字设定 — 签名剪影与禁止项  
+5. 捆绑画风锁图（`assets/character/` + `assets/style-lock/`）— **只学颗粒/密度/版式气质，不能盖过身份**
+
+冲突时：脸近景以 bust 为准；全身服装以 clean 为准；配饰细节以 sheet 特写为准；文字 spec 用来核对「有没有漏锁」。
 
 ## 生图时注入的身份锚点（短，勿整份粘贴）
 
-Use the provided confirmed character reference as the primary identity reference.
+Use the provided confirmed character package as the authoritative identity set (fullbody + bust + sheet if any + this spec).
 Preserve recognizable identity: attitude/expression, signature silhouette, colors, markings, and outfit/accessories if present.
 The character may change pose, gesture, and environment; keep the same memorable features.
 Do not redesign the character. Do not substitute a generic character.

@@ -4,8 +4,25 @@
 
 不要把整份 character-spec 粘进 prompt。按模块拼，每张单独生成。
 
-始终带上当前角色的干净全身参考图。  
-当前角色不是画风锁示范身份时，额外传入 `assets/character/` 半身+全身作 **style-lock only**，并写明不要复制画风锁图里那个人的脸、帽、衣服。
+## 参考图怎么传（身份 vs 画风）
+
+**身份（当前 confirmed 角色包，能带尽带）：**
+
+1. `character-reference-clean.png` — 全身比例与整套服装  
+2. `character-bust.png` — 脸/发型/头配件近景（必须）  
+3. `character-sheet.png` — 若有：三视图、配饰特写、配色（必须带）  
+4. 另从 `character-spec.md` 提炼短 Character Lock 句子  
+
+禁止只传一张全身。冲突时：clean/bust/sheet/spec 互相印证；画风锁永远让路给身份。
+
+**画风/气质（按成品选，勿盖身份）：**
+
+- 长文封面 → `assets/style-lock/warm-pixel-scene-16x9.png`  
+- 长文正文 → `assets/style-lock/article-body-editorial-16x9.png`  
+- 知识卡 → `assets/style-lock/knowledge-card-editorial-3x4.png`  
+- 创建角色时的像素密度 → `assets/character/` 半身+全身（style-lock only）  
+
+当前角色不是画风锁示范身份时，写明：不要复制画风锁图里那个人的脸、帽、衣服。
 
 水印**不要写进生图 prompt**。每张成品右下角后盖，文案来自当前角色 spec。
 
@@ -196,26 +213,81 @@ TEXT: large pixel lettering. 5–12 text blocks max. Write exact_labels exactly.
 ⑤换主题还能继续用
 ```
 
-## 知识卡片 3:4（整张一次画完）
+## 知识卡片 3:4（固定层 + 内容层）
+
+细则见 `card-style-system.md` / `card-layout-system.md` / `card-character-system.md` / `card-content-analysis.md`。  
+气质锁：`assets/style-lock/knowledge-card-editorial-3x4.png`（只锁版式气质，身份以当前角色参考为准）。
+
+每次生成：**整段固定层可复用**，只替换【CARD CONTENT】。
 
 ```text
-3:4 HD pixel knowledge card. One complete illustration, not a typeset poster, not HTML layout, not a character sticker on blank paper.
-[CHARACTER LOCK]
-[PIXEL STYLE LOCK]
-Warm simple pixel scene: cream paper / light wood desk / cork board, optional dark-brown pixel frame. Match the warm scene style-lock mood, but less crowded.
+Create a premium editorial knowledge card / educational infographic from the personal character reference.
+IMAGE FORMAT: Vertical 3:4. High-resolution. Clean FLAT solid warm ivory/cream background (subtle pixel grain OK). One coherent editorial poster, not sticker collage, not HTML magazine, not a busy room scene.
 
-PAGE TYPE: [cover / pain / concept / steps / compare / pitfall / cta]
-ONE IDEA: [one idea]
-VISUAL METAPHOR: [metaphor]
-CHARACTER ACTION: a real doing-pose with props, not standing and pointing at a board.
-PROPS: [1–3]
+CHARACTER REFERENCE — IDENTITY LOCK
+The provided character image is PRIMARY and AUTHORITATIVE.
+Same face, hairstyle, proportions, signature outfit/accessories, palette, cute-intelligent-fashion personality.
+Do NOT redesign into a generic anime girl. Do NOT change clothing/hair/accessories absent from the reference unless requested.
+Same recurring IP mascot across the series.
 
-In-image text, short complete phrases, large enough to read:
-[EN short title if any]
-[ZH phrases, each 6–14 characters; steps/compare pages MUST be numbered ①②③]
-At most 8 phrases. No 2-character-only crumbs on steps pages.
+CHARACTER AS VISUAL EXPLAINER
+The character must demonstrate / explain / point / hold / operate / compare / react.
+Never only decorate the corner. Never the same forever laptop pose.
+Scale: about 1/4–1/3 of the frame if single figure; or multiple smaller explainer figures inside modules. Text/modules dominate. Do NOT let the character fill the poster.
 
-Readable Chinese, no paragraphs, no tiny essay, no watermark, no PPT, no magazine collage.
+VISUAL STYLE
+Premium retro pixel-art editorial illustration — sophisticated modern pixel art, NOT photo, NOT semi-real anime, NOT 3D, NOT 8-bit chunky.
+Feel: "editorial infographic from a beautiful retro indie-game / RPG UI."
+
+PIXEL ART QUALITY CONTROL
+Construct the character as pixel art from the start. Do NOT paint anime then add a pixel filter.
+Visible intentional pixel clusters in hair, eyes, face, clothes, accessories, shadows, highlights, outlines.
+Hair = grouped pixel strands. Faces = few careful pixel clusters. Edges = controlled stair-stepping.
+
+COLOR SYSTEM
+Warm ivory/cream, light beige, cocoa brown, dark espresso, muted peach, dusty pink, subtle gray.
+Anchor on the character's existing colors. Avoid neon.
+
+LAYOUT SYSTEM
+Clear editorial hierarchy with intentional negative space and clean margins.
+Use 1–5 information modules for this card (series cards: usually 1–2; single deep card: up to 4–7).
+Hierarchy: HERO TITLE → short intro → main modules → character interaction → key takeaway box → tiny pixel UI accents only if helpful.
+Choose layout by content type (concept / compare / process / framework / tutorial / list / etc.). Do NOT force one template for every topic.
+RPG-style UI frames, panels, numbered blocks, arrows, folder icons OK.
+
+TYPOGRAPHY
+Large retro pixel type for main title / key English terms / numbers.
+Highly readable modern sans for Chinese explanations.
+Strong hierarchy. No decorative pixel fonts for long paragraphs. No tiny body text. No overcrowding.
+
+TEXT ACCURACY
+Preserve exact terminology (SKILL.md, Cursor, Claude, Codex, AI, API, GitHub, etc.).
+No invented facts. All visible text intentional, correctly spelled, legible.
+Short sentences only — not article paragraphs pasted onto the canvas.
+
+INFORMATION DESIGN
+Viewer understands in 2–3 seconds via: title → character demo → main diagram → takeaway.
+Transform content into visual architecture (metaphor, flow, compare, modules). Do NOT typeset the article.
+
+BACKGROUND
+Simple solid warm ivory/beige. No photographic rooms, shelves, cork walls, landscapes, busy environments.
+
+FINAL AESTHETIC
+Cute + intelligent + fashionable + slightly nerdy + retro + editorial + tech.
+Another page from the same personal knowledge universe.
+
+Before drawing, internally analyze: core question, takeaway, content type, modules, metaphor, character action, best layout. Then compose.
+
+【CARD CONTENT】
+PAGE TYPE: [cover/pain/concept/steps/compare/pitfall/cta]
+CONTENT TYPE: […]
+CORE QUESTION: […]
+HERO / TITLE: […]
+MODULES / EXACT LABELS: […]
+CHARACTER ACTION: […]
+VISUAL METAPHOR: […]
+KEY TAKEAWAY: […]
+No watermark in the image.
 ```
 
 ## 多图一致性

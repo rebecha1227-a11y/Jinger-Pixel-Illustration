@@ -52,6 +52,17 @@
 
 没有三视图也可以 confirmed。
 
+## 出图时怎么用角色包
+
+配长文或知识卡时：
+
+1. `resolve` 拿到当前角色全部路径  
+2. 生图传入 **clean + bust +（若有）sheet**，并读 spec 写短 Character Lock  
+3. 画风/气质锁另附（封面 / 正文 / 知识卡各用各的），且不得盖过身份  
+4. 全部生成后，按 `qa-checklist.md` 做「角色包对照审核」再交付  
+
+禁止只看一张全身图就出成品。干净锚点成图里不要出现设定板排版/色板框。
+
 ## 脚本
 
 在 Skill 根目录运行。`<runtime-root>` 是 `.jinger-pixel-assets`。

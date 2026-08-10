@@ -47,16 +47,15 @@
 
 ## 生成
 
-1. 身份参考默认 `character-reference-clean`；侧面/背面才加三视图（如果有），并禁止把设定板背景画进成图。
-2. 封面再加 `assets/style-lock/warm-pixel-scene-16x9.png` 作场景气质锁。
-3. 先出封面；再出第一张正文。第一张正文过关后，把它当**本套正文气质锁**（底色、边框、像素风格），后面正文图跟它统一。封面不必跟正文同一底色。
+1. **身份全量参照**：传入当前角色 `character-reference-clean` + `character-bust` +（若有）`character-sheet`；读 `character-spec.md` 写短 Character Lock。禁止只看一张全身。不要把设定板排版/色板框画进成图。
+2. **气质锁分流**：封面加 `assets/style-lock/warm-pixel-scene-16x9.png`；正文加 `assets/style-lock/article-body-editorial-16x9.png`（只锁画风/版式气质，勿复制样例角色身份）。
+3. 先出封面；再出第一张正文。第一张正文过关后，把它当**本套正文统一锁**（底色、边框、像素风格），后面正文图跟它统一。封面不必跟正文同一底色。
 4. 按 `prompt-templates.md` 的组装顺序拼 prompt，每张单独调用一次图像工具。
 5. 生成后**排版叠加**当前角色水印到右下角，不要让 AI 画水印。
-6. 过 `qa-checklist.md`（必查 + 一套图的系列/缩略图）。同一张最多针对性重试 2 次。用户指定「这张更好」时，以该图为定稿底再改，不要另起一张从零画。
+6. **强制审核**：过 `qa-checklist.md`——先做「角色包对照审核」，再做必查 + 系列/缩略图。同一张最多针对性重试 2 次。用户指定「这张更好」时，以该图为定稿底再改，不要另起一张从零画。
 7. 保存到 `.jinger-pixel-assets/illustrations/<article-slug>/`
 
-无生图：输出每张 prompt + 参考图路径 + 建议插入位置 + 水印文案，不假装 PNG 已完成。
-
+无生图：输出每张 prompt + 参考图路径（列出 clean/bust/sheet/spec）+ 建议插入位置 + 水印文案，不假装 PNG 已完成。
 ## Markdown 插入
 
 默认只报告建议位置。用户明确说「插入」且文件可写时：
