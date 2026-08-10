@@ -4,7 +4,7 @@
 
 禁止给使用者「试用示范角色 / 启用内置角色」。捆绑像素图只作画风锁 + 作者示范，见 `style-dna.md`。
 
-填写设定时用 `references/character-spec.md` 模板。作者示范见 `examples/jinger/`；虚构填写示例见 `examples/example-character/`。
+填写设定时用 `references/character-spec.md` 模板。作者示范见 `examples/jinger/`；公开填写示例见 `examples/ania/`。
 
 角色不一定是真人。用户可以拿**有权使用**的参考素材做成高清复古像素 IP：真人照、宠物、表情包、动漫角色、品牌吉祥物等。重点是抓住**神态和记忆点**，不是做成写实照片。
 

@@ -4,7 +4,7 @@
 
 - 真实照片、宠物图、表情包、Logo、私有设定 → 本地 `.jinger-pixel-assets/`，不要提交 GitHub
 - 作者示范（画风锁，不是试用角色）→ `examples/jinger/`
-- 虚构填写示例（暂无图）→ `examples/example-character/`
+- 公开填写示例（含图）→ `examples/ania/`
 
 创建角色时按本模板写一份，存进该角色目录的 `character-spec.md`。
 
