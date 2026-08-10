@@ -14,26 +14,29 @@
 1. 画幅与背景模式  
 2. Character lock（短）  
 3. Pixel style lock（短）  
-4. 这一张的 visual plan（主张 / 比喻 / 动作 / 物件 / 场景）  
+4. 这一张的 visual plan（插哪段 / 只讲什么 / 精确文案 / 构图）  
 5. 构图  
 6. 图内文字限制  
 7. 禁止项  
 
 ## 生图前的 visual plan（Agent 内部，中文即可）
 
+想不清就不要调生图。计划写完再拼 prompt。细则见 `concept-visual-language.md`。
+
 ```text
 visual_plan:
-  topic:
-  core_message:
+  insert_after:        # 插在文章哪一段后面（封面=文首标题下）
+  job:                 # 这一张只让人看懂什么（一句话）
+  not_this_image:      # 不要和本套其他图讲同一件事
   visual_metaphor:
-  character_action:
-  supporting_objects:   # 1–3
-  environment:          # 封面暖色场景 / 正文白底 / 卡片暖色场景
+  character_budget:    # none / 1 accent / 1 hero
+                       # 说明图默认 none 或 1 accent；迷你剧场才用 1 hero
+  character_action:    # budget=none 时可空
+  supporting_objects:  # 1–3
+  environment:         # 封面可独立底色；正文图跟本套统一底/边框
   composition:
-  text_labels:          # 能不加就不加
+  exact_labels:        # 要画的中文，连标点；禁止同义改写
 ```
-
-从 `concept-visual-language.md` 的流水线来。计划写完再拼 prompt。
 
 ## Character lock
 
@@ -144,59 +147,48 @@ If the character were removed, the picture would not make sense.
 Almost no in-image text. No watermark. No photoreal scene.
 ```
 
-## 流程说明图 16:9 / 3:4（怎么用、你会得到什么）
+## 流程说明图 16:9 / 3:4（列步骤、清点、对比）
 
-不要用迷你剧场模板。先读 `explainer-workflow.md`。
+不要用迷你剧场模板。先读 `explainer-workflow.md`。  
+图内中文用 visual plan 的 `exact_labels`，不要同义改写。
 
 ```text
 [16:9 or 3:4] HD pixel instructional illustration, warm cream paper / light wood / cork board, optional dark-brown pixel frame. Not a blank white mini-theater. Not a PPT SmartArt. Not an HTML poster.
 [CHARACTER LOCK]
 [PIXEL STYLE LOCK]
 
-PAGE JOB: explain a process or inventory so a new user understands it at a glance.
-TITLE (large, readable): [e.g. 最终你会拿到什么？ / PIXEL IP怎么用]
-LAYOUT: numbered steps ①②③④ top-to-bottom OR left-to-right with LARGE pixel arrows connecting them.
+PAGE JOB: [one sentence from visual_plan.job]
+TITLE (large, readable): [exact title]
+LAYOUT: numbered steps top-to-bottom OR left-vs-right with ONE large pixel arrow.
 
-EACH STEP MUST INCLUDE:
-- a number
-- a complete short Chinese phrase (6–16 characters), NOT a 2-character crumb like 素材/确认/出图
-- its OWN visual cell (1:1 mapping). Never send three arrows into one collage.
-- the same locked character doing a DIFFERENT action with a DIFFERENT prop
-- a large nameplate on the key object, used only once
+INFORMATION DESIGN FIRST:
+- each step = number + complete short Chinese phrase (6–16 characters) + its OWN cell
+- 1:1 mapping. Never send three arrows into one collage.
+- large nameplates on the matching objects; each phrase once
+- if listing alternatives, write spaced slashes: A / B / C
+- if using ①②③④, those numbers appear ONCE on the page, not repeated in every row
+- any wide/tall preview inside a cell sits fully inside the box with padding
+
+CHARACTER: optional small accent (visual_plan.character_budget).
+Prefer large readable labels + icons. Do not put the character in every cell.
+If the character appears: not standing still pointing at a board; not identical clones that only change hands.
 
 SHAPE LOCK:
-- character anchor = full-body on plain white, not a scene
-- turnaround = front + side + back mini figures in a separate cell
-- 16:9 set = WIDE landscape frames (cover scene + 1–2 body frames), never a square headshot, never a closed book
-- 3:4 card = TALL card with the character + short labels visible inside
-- user photo/meme input = looks like a photo or sticker, NOT an already-finished pixel portrait
+- a wide product must look like a wide landscape frame, never a square headshot or closed book
+- a tall card must look tall, with content visible inside
+- a user photo / sticker / manuscript must look like photo/sticker/paper, NOT a finished pixel portrait
 
-FORBIDDEN POSES: standing still pointing at a board; identical lower body across clones; thumbs-up with no prop; holding an unrelated landscape photo.
-
-TEXT: large pixel lettering. 5–12 text blocks max. Each phrase once. No paragraphs. No tiny unreadable Chinese. No watermark. No "豆包AI生成".
-
-If this is "what you provide vs what you get":
-LEFT nameplates (once each): 真人照/宠物/表情包 , 文章或观点 , Logo或场景（可选）
-RIGHT nameplates (once each): 像素角色全身+半身 , 16:9封面+正文 , 3:4知识卡片
-Put one big arrow in the middle. Do not duplicate any label.
+TEXT: large pixel lettering. 5–12 text blocks max. Write exact_labels exactly. No paragraphs. No tiny unreadable Chinese. No watermark.
 ```
 
-提供 vs 得到 示例短句（可直接用，不要再缩成两个字）：
+介绍**本 skill 自己**时，可用下面短句当示例（别的文章不要照抄，按那一篇的 exact_labels 写）：
 
 ```text
-①你提供：真人照/宠物/表情包
-②你提供：文章或知识观点
-③你提供：Logo或场景描述（可选）
-→
-④你得到：锁定的像素角色
-⑤你得到：16:9封面+正文
-⑥你得到：3:4知识卡片
-⑦同一角色下一篇还能用
-```
+左右对照示例：
+左：真人照 / 宠物 / 表情包 ；文章 / 知识观点 ；Logo / 场景描述
+右：固定的像素风个人IP角色 ；16:9长文配图 ；3:4知识分享卡片图
 
-「最终你会拿到什么」示例短句：
-
-```text
+纵向清单示例：
 ①1张角色锚点
 ②可选三视图
 ③16:9长文套图
@@ -234,6 +226,11 @@ Keep the same confirmed character reference for every image.
 Keep signature features, silhouette, colors/markings, pixel density, outline treatment, and palette logic consistent.
 Only change pose, expression, action, environment, and article-specific objects.
 Every image should feel like another scene from the same pixel-art universe.
+
+ARTICLE SERIES LOOK:
+- Cover may use a different background color/scene from the body images (same is also OK).
+- All non-cover illustrations in the SAME article must share one background, one border treatment, and one pixel style.
+- After the first body image passes, use it as the look lock for the remaining body images.
 
 ## 修图
 
