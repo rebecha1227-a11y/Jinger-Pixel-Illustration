@@ -75,9 +75,9 @@
 
 ## 知识卡片 3:4
 
-- 画幅 3:4。编辑式像素信息图（固定 Style + 可变 Layout），细则见 `card-workflow.md` 与 `card-*-system.md`。
-- 气质对齐 `knowledge-card-editorial-3x4.png`：**几乎纯色**暖米白底 + RPG/像素 UI 模块；不是房间剧场。
-- 角色是讲解者（约 1/4～1/3 或模块内小分身），必须有互动；禁止撑满、禁止角落装饰贴图。
-- 先内容分析再出图；点缀色可用该角色 `accent_colors`。
+- 画幅 3:4。流水线见 `card-workflow.md`（内容分析→版式→风格→角色 edit→生图→可选二期排字）。
+- 气质对齐 `knowledge-card-editorial-3x4.png`：**几乎纯色**暖米白底 + RPG/像素 UI；信息有密度；不是房间剧场。
+- 角色是讲解者；全身/半身/多小分身按排版与文字互动选择，不默认某一种；占位通常约 1/4～1/3。
+- 身份优先 edit-from-package；知识点来自原文；禁止降质求通。
 - 英文像素标题用于主标题/关键词；说明用短句。步骤/对比见 `card-templates.md`。
 - 禁止：HTML 杂志贴图、复杂房间、Vox 拼贴、深色 Game Boy 整屏、PPT SmartArt、像素滤镜假像素

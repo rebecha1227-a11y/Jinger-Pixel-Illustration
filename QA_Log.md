@@ -3,6 +3,47 @@
 ## 2026-08-11
 
 ### 问题
+按已定流水线改写 skill；纠正「半身优先」——全身/半身都可，按文字互动与排版占位决定。
+
+### 答案核心
+- 流水线写入 `card-workflow.md`（一期 Mode A / 二期 TEXT RENDERER）。
+- 角色系统：edit-from-package；CROP=bust|fullbody|multi-mini + 理由，无默认半身。
+- 内容必须追溯原文；禁止超时砍 prompt 后凑数交付。
+
+### 相关引用
+- `references/card-*.md`、`prompt-templates.md`、`qa-checklist.md`、`SKILL.md`
+
+## 2026-08-11
+
+### 问题
+ChatGPT 建议的知识卡流水线（文章→内容分析→版式→风格→角色→image-2→文字渲染→成品）能不能采纳？
+
+### 答案核心
+- 大方向可采纳，且与现有 card-*-system 一致；仍挂在本 Skill 的 3:4 出图系统内，不另立 skill。
+- 前半段（分析/版式/风格/角色）应立刻写成硬流程；角色强调「角色包底图 edit」，禁止为空想重画。
+- TEXT RENDERER（程序叠中文）是 Mode B，建议二期：先 Mode A 把原文模块写进 prompt；字一多不稳再开排字。
+- IMAGE-2 在 Cursor 易超时：可分步（底板→贴角色），或 Codex 直连；禁止超时就砍身份/原文。
+
+### 相关引用
+- `references/card-content-analysis.md` 等 card-*；对话中的通道选择
+
+## 2026-08-11
+
+### 问题
+知识卡几乎都不满意；仅文件夹 03/04 OK。角色不一致（尤其头发）能否基于角色包图改而不是重画？字少人大多全身；信息过少须结合原文；超时导致精简 prompt 是根因之一。
+
+### 答案核心
+- 根因承认：Cursor MCP 超时 → 降质精简 prompt → 一致性与信息密度双崩。
+- 解法方向：①身份用角色包图作底/强参考，edit 改姿态，忌从零重画；②半身/模块分身优先；③每张从 article.md 抽 exact 模块再进 prompt；④不把「降质求通」当正常流程——换通道或分步生图。
+- 详见对话方案：底图编辑 / 分步（版式→贴角色）/ Codex 直连 / 原文驱动内容层。
+
+### 相关引用
+- `.jinger-pixel-assets/cards/how-to-make-skill/`
+- `references/card-*.md`、`qa-checklist.md`
+
+## 2026-08-11
+
+### 问题
 `01-pain.png` 也可作长文正文画风气质锁；画图时角色来源要全身+半身+sheet+spec 全参照；画完要有审核步骤对照角色包细节（已有 checklist）。
 
 ### 答案核心

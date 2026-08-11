@@ -1,52 +1,83 @@
 # 知识卡 · 内容分析（文章 → 视觉结构）
 
-在调生图之前**必须先做这一步**。不要「文章直接丢给 image-2」。
+在调生图之前**必须先做这一步**。不要「文章直接丢给 image-2」，更不要靠模型想象力补知识。
 
-本文件只服务 **3:4 知识卡片**这一套出图系统；长文配图走 `article-workflow.md`。
+本文件只服务 **3:4 知识卡片**；长文走 `article-workflow.md`。
 
 ## 流程位置
 
 ```text
-用户主题 / 文章
-  → CONTENT ANALYSIS（本文件）
-  → LAYOUT 选型（card-layout-system.md）
-  → 拼固定层 Prompt + 内容层（prompt-templates.md）
-  → 生图
-  → 后盖水印
+USER ARTICLE
+  → CONTENT ANALYZER（本文件）
+  → LAYOUT ENGINE
+  → STYLE SYSTEM
+  → CHARACTER SYSTEM
+  → IMAGE-2
+  →（二期）TEXT RENDERER
+  → FINAL
 ```
 
-## 输出格式（每张卡或整套总纲都要写）
+## 输入
+
+优先顺序：
+
+1. 用户指定的正文 / `article.md` / 粘贴的文章  
+2. 用户口述的要点列表  
+3. 仅有主题时：先向用户确认 3–5 条要讲的点，再分析——**禁止静默编造知识点**
+
+## 分析步骤（Agent 内部）
+
+1. 识别 **CONTENT TYPE**（concept / comparison / process / framework / …）  
+2. 提取 **CORE QUESTION** 与 **HERO / TAKEAWAY**（尽量用原文原句或原文紧缩，不擅自改术语）  
+3. 提取 **3–5 个知识模块**（多卡系列则分配到各张，每张通常 1–3 个模块 + 必要短解释）  
+4. 确定模块关系：stack / compare / flow / hub / metaphor  
+5. 确定 **VISUAL METAPHOR**  
+6. 确定 **CHARACTER ACTION** 与建议的 **CHARACTER CROP**（bust / fullbody / multi-mini + 理由）  
+7. 写出 **EXACT LABELS**：要进画面的字，**逐字可追溯到原文**；需要解释句时从原文压缩，禁止同义乱改术语  
+
+## 输出格式
 
 ```text
-CONTENT TYPE: concept | comparison | process | framework | tutorial | list | timeline | cause-effect | architecture | abstract
-CORE QUESTION: （读者打开图要被回答的一句话）
-HERO / TAKEAWAY: （最重要的一句，可进结论框）
-MODULES: （3–5 个；多卡系列则每张只保留 1–2 个）
-  - 01 …
+SOURCE: （文章路径或「用户粘贴 / 口述要点」）
+CONTENT TYPE: …
+CORE QUESTION: …
+HERO / TAKEAWAY: …
+MODULES:
+  - 01 …（来源：第×节 / 原句摘录）
   - 02 …
-RELATIONSHIPS: stack | compare | flow | hub | metaphor
-VISUAL METAPHOR: （文件夹 / 箭头 / 双栏 / 清单 UI …）
-CHARACTER ROLE: 视觉讲解者（不是旁观装饰）
-CHARACTER ACTION: （拿着什么、指着什么、操作什么；每张不同）
-LAYOUT CHOICE: （对照 card-layout-system.md）
-EXACT LABELS: （要进画面的中英文字，禁止同义改写）
+RELATIONSHIPS: …
+VISUAL METAPHOR: …
+CHARACTER ROLE: 视觉讲解者
+CHARACTER ACTION: …
+CHARACTER CROP: bust | fullbody | multi-mini
+CROP REASON: （互动 / 占位一句话）
+LAYOUT CHOICE: …
+EXACT LABELS: …
+  - …
+IDENTITY METHOD: edit-from-package（默认）
 ```
+
+多卡时：上面可以有一份「总纲」，再为每张卡写缩略版；shot list 的 EXACT LABELS 必须能对上总纲。
+
+## 信息密度
+
+对齐合格样例（气质锁 / 用户点名 OK 的卡）：
+
+- 不止大标题：要有模块标题 + 必要的一句说明或结构关系  
+- 禁止「只有三行钩子 + 巨大角色」  
+- 也禁止把整段文章贴进图里；短句、可扫读  
 
 ## 硬规则
 
-- 先理解结构，再决定版式；禁止把段落原文贴进画布。
-- 一张卡只服务一个主问题；多卡系列用 shot list 拆开。
-- 术语保留原文：`SKILL.md`、Cursor、Claude、Codex、API、GitHub 等不得乱改。
-- 2–3 秒内应能读出：标题 → 角色在演示什么 → 主图示 → 结论。
+- 知识来自原文；没有来源就停下来问，不要编  
+- 术语保留：`SKILL.md`、Cursor、Claude、Codex、API、GitHub 等  
+- 一张卡一个主问题；系列用 shot list 拆  
+- 2–3 秒内可读：标题 → 角色在演示什么 → 主图示 → 结论  
 
-## 内部自检（写进生图 prompt 的一小段即可）
+## 写入 Prompt 的自检句
 
 ```text
-Before generating, internally analyze:
-- core question, single takeaway, content type
-- 3–5 supporting concepts and their relationships
-- best visual metaphor and character action
-- best infographic layout for THIS content type
-Then design visual information architecture.
-Do NOT simply typeset the article onto the canvas.
+Before generating, use ONLY the provided SOURCE modules and EXACT LABELS.
+Do not invent extra tips, pros/cons lists, or facts not in the source.
+Transform the source into visual information architecture.
 ```

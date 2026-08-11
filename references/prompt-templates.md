@@ -215,78 +215,69 @@ TEXT: large pixel lettering. 5–12 text blocks max. Write exact_labels exactly.
 
 ## 知识卡片 3:4（固定层 + 内容层）
 
-细则见 `card-style-system.md` / `card-layout-system.md` / `card-character-system.md` / `card-content-analysis.md`。  
-气质锁：`assets/style-lock/knowledge-card-editorial-3x4.png`（只锁版式气质，身份以当前角色参考为准）。
+细则：`card-workflow.md` 流水线；`card-content-analysis.md` / `card-layout-system.md` / `card-style-system.md` / `card-character-system.md`。  
+气质锁：`assets/style-lock/knowledge-card-editorial-3x4.png`（只锁版式气质；身份以角色包为准）。
 
-每次生成：**整段固定层可复用**，只替换【CARD CONTENT】。
+默认 **edit-from-package**：把角色包 bust/clean 当输入图，只改姿势与道具，再嵌入版式。  
+【CARD CONTENT】必须来自原文分析；禁止模型发明额外 tip 列表。
+
+每次生成：**固定层可复用**，只替换【CARD CONTENT】。
 
 ```text
-Create a premium editorial knowledge card / educational infographic from the personal character reference.
-IMAGE FORMAT: Vertical 3:4. High-resolution. Clean FLAT solid warm ivory/cream background (subtle pixel grain OK). One coherent editorial poster, not sticker collage, not HTML magazine, not a busy room scene.
+Create a premium editorial knowledge card / educational infographic.
+Prefer EDITING the provided character package image(s): keep face/hair/outfit identical; only change pose, hands, props, and place into the layout. Do NOT invent a new character from scratch.
+IMAGE FORMAT: Vertical 3:4. Clean FLAT solid warm ivory/cream background. One coherent editorial poster. Not sticker collage, not HTML magazine, not a busy room.
 
 CHARACTER REFERENCE — IDENTITY LOCK
-The provided character image is PRIMARY and AUTHORITATIVE.
-Same face, hairstyle, proportions, signature outfit/accessories, palette, cute-intelligent-fashion personality.
-Do NOT redesign into a generic anime girl. Do NOT change clothing/hair/accessories absent from the reference unless requested.
+Provided character package images (fullbody and/or bust and/or sheet) are PRIMARY and AUTHORITATIVE.
+Same face, hairstyle, proportions, signature outfit/accessories, palette.
+Do NOT redesign. Do NOT copy any other sample character from a style-lock image.
 Same recurring IP mascot across the series.
 
 CHARACTER AS VISUAL EXPLAINER
-The character must demonstrate / explain / point / hold / operate / compare / react.
-Never only decorate the corner. Never the same forever laptop pose.
-Scale: about 1/4–1/3 of the frame if single figure; or multiple smaller explainer figures inside modules. Text/modules dominate. Do NOT let the character fill the poster.
+Demonstrate / explain / point / hold / operate / compare / react.
+Never only decorate. Never the same forever laptop pose.
+Crop: bust OR fullbody OR multi-mini — choose what best serves text interaction and layout space for THIS card (stated in CARD CONTENT). Text/modules dominate; character about 1/4–1/3 if single figure. Do NOT fill the poster.
 
 VISUAL STYLE
-Premium retro pixel-art editorial illustration — sophisticated modern pixel art, NOT photo, NOT semi-real anime, NOT 3D, NOT 8-bit chunky.
-Feel: "editorial infographic from a beautiful retro indie-game / RPG UI."
-
-PIXEL ART QUALITY CONTROL
-Construct the character as pixel art from the start. Do NOT paint anime then add a pixel filter.
-Visible intentional pixel clusters in hair, eyes, face, clothes, accessories, shadows, highlights, outlines.
-Hair = grouped pixel strands. Faces = few careful pixel clusters. Edges = controlled stair-stepping.
+Premium retro pixel-art editorial / RPG UI. Feel: "editorial infographic from a beautiful retro indie-game UI."
+PIXEL ART QUALITY CONTROL: construct as pixel art from the start; no anime-then-filter. Intentional pixel clusters in hair/eyes/clothes/edges.
 
 COLOR SYSTEM
-Warm ivory/cream, light beige, cocoa brown, dark espresso, muted peach, dusty pink, subtle gray.
-Anchor on the character's existing colors. Avoid neon.
+Warm ivory/cream, beige, cocoa, espresso, muted peach, dusty pink, gray. Anchor on character colors. Avoid neon.
 
 LAYOUT SYSTEM
-Clear editorial hierarchy with intentional negative space and clean margins.
-Use 1–5 information modules for this card (series cards: usually 1–2; single deep card: up to 4–7).
-Hierarchy: HERO TITLE → short intro → main modules → character interaction → key takeaway box → tiny pixel UI accents only if helpful.
-Choose layout by content type (concept / compare / process / framework / tutorial / list / etc.). Do NOT force one template for every topic.
-RPG-style UI frames, panels, numbered blocks, arrows, folder icons OK.
+Hierarchy: HERO TITLE → short intro → main modules (title + short explanation each when needed) → character interaction → key takeaway.
+1–5 modules (series) or up to 4–7 (single deep card). Information-dense like a polished editorial card — NOT three sparse lines + huge character.
+Choose layout by content type. RPG UI frames, panels, arrows, folder trees OK.
 
-TYPOGRAPHY
-Large retro pixel type for main title / key English terms / numbers.
-Highly readable modern sans for Chinese explanations.
-Strong hierarchy. No decorative pixel fonts for long paragraphs. No tiny body text. No overcrowding.
-
-TEXT ACCURACY
-Preserve exact terminology (SKILL.md, Cursor, Claude, Codex, AI, API, GitHub, etc.).
-No invented facts. All visible text intentional, correctly spelled, legible.
-Short sentences only — not article paragraphs pasted onto the canvas.
-
-INFORMATION DESIGN
-Viewer understands in 2–3 seconds via: title → character demo → main diagram → takeaway.
-Transform content into visual architecture (metaphor, flow, compare, modules). Do NOT typeset the article.
+TYPOGRAPHY & TEXT ACCURACY
+Large pixel type for titles/key English terms. Readable sans for Chinese.
+Use ONLY EXACT LABELS / modules from CARD CONTENT (sourced from the article). No invented tips/pros/cons/facts.
+Short sentences; no pasted paragraphs; no tiny unreadable text.
 
 BACKGROUND
-Simple solid warm ivory/beige. No photographic rooms, shelves, cork walls, landscapes, busy environments.
+Simple solid warm ivory/beige. No rooms, shelves, cork walls, landscapes.
 
 FINAL AESTHETIC
 Cute + intelligent + fashionable + slightly nerdy + retro + editorial + tech.
 Another page from the same personal knowledge universe.
 
-Before drawing, internally analyze: core question, takeaway, content type, modules, metaphor, character action, best layout. Then compose.
-
 【CARD CONTENT】
-PAGE TYPE: [cover/pain/concept/steps/compare/pitfall/cta]
+SOURCE SECTION: […]
+PAGE TYPE: […]
 CONTENT TYPE: […]
 CORE QUESTION: […]
 HERO / TITLE: […]
-MODULES / EXACT LABELS: […]
+MODULES (from article; each may include one short explanation line):
+  - …
+EXACT LABELS: …
+CHARACTER CROP: bust | fullbody | multi-mini
+CROP REASON: […]
 CHARACTER ACTION: […]
 VISUAL METAPHOR: […]
 KEY TAKEAWAY: […]
+IDENTITY METHOD: edit-from-package
 No watermark in the image.
 ```
 

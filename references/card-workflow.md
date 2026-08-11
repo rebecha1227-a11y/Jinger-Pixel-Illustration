@@ -4,74 +4,115 @@
 
 这是 Skill 里的 **第二套出图系统**（3:4 知识卡），与 16:9 长文配图并列，**不是**独立 Skill。
 
-## 必读顺序（按需，不要一次塞完）
+## 总蓝图（采纳的流水线）
 
-1. `card-content-analysis.md` — 文章 → 视觉结构  
-2. `card-style-system.md` — 固定画风 / 色盘 / 纯色底  
-3. `card-layout-system.md` — 按类型选版式  
-4. `card-character-system.md` — 身份锁 + 讲解者互动 + 体量  
-5. `card-templates.md` — 多卡页型（shot list 用）  
-6. `prompt-templates.md` 的「知识卡片」整段 — 固定层 + 内容层  
-7. 当前角色 `character-spec.md`  
-8. 生图前过 `qa-checklist.md` 知识卡项  
+```text
+USER ARTICLE / 主题
+      ↓
+CONTENT ANALYZER          ← card-content-analysis.md（必须从原文抽）
+      ↓
+识别文章类型 → 核心观点 → 3–5 知识模块 → 视觉隐喻 → 角色动作
+      ↓
+LAYOUT ENGINE             ← card-layout-system.md
+      ↓
+STYLE SYSTEM              ← card-style-system.md
+      ↓
+CHARACTER SYSTEM          ← card-character-system.md（角色包底图 / edit）
+      ↓
+IMAGE-2                   ← 视觉素材（一期含短句；二期可少字）
+      ↓
+TEXT RENDERER（二期可选） ← 程序叠中文；一期默认不做
+      ↓
+FINAL 3:4 + 后盖水印 + QA
+```
+
+### 一期 vs 二期
+
+| | 一期（默认，立刻执行） | 二期（用户明确要求或字稳不住时） |
+|---|---|---|
+| 文字 | Mode A：短句由 image-2 画进图 | Mode B：image-2 少字/无正文 → TEXT RENDERER 叠中文 |
+| 角色 | 角色包全量参照；优先 **edit 改姿态**，禁止从零空想重画一个人 | 同左 |
+| 通道 | 完整内容层 + 身份锁必须保留；**禁止**为躲超时砍掉原文模块/发型锁 | 可 Codex 直连或分步：底板 → 贴角色 |
 
 气质锁：`assets/style-lock/knowledge-card-editorial-3x4.png`  
-（不要用长文的 `warm-pixel-scene-16x9.png` 当知识卡主锁。）
+（不要用长文 `warm-pixel-scene-16x9.png` 当知识卡主锁。）
 
-`templates/` HTML 仅无生图且用户要求占位时用，**不是**目标气质。
+## 必读顺序（按需）
+
+1. `card-content-analysis.md`  
+2. `card-layout-system.md`  
+3. `card-style-system.md`  
+4. `card-character-system.md`  
+5. `card-templates.md`（多卡 shot list 页型）  
+6. `prompt-templates.md`「知识卡片」固定层 + 内容层  
+7. 当前角色 `character-spec.md` + 角色包图  
+8. `qa-checklist.md`  
 
 ## 数量与形态
 
-- 默认 **6–8 张**多卡系列，最多 9；封面必有；末页默认 CTA。  
-- 用户明确只要 **1 张总览深讲**时，可出单卡（模块可到 4–7 块）。  
-- 两种形态共用同一套 Style / Character / Layout 规则。
+- 默认 **6–8** 张多卡，最多 9；封面必有；末页默认 CTA。  
+- 也可 **1 张总览深讲**（模块 4–7）。  
+- 信息密度对齐气质锁样例与合格成品：标题 + 模块说明 + 短解释 + 讲解者；**禁止**「三行字 + 一个大人」。
 
-## 总流程
+## 执行步骤
 
-```text
-主题或文章
-  → 内容分析（card-content-analysis）
-  → 多卡：写 shot list；单卡：写一份 visual plan
-  → 等人确认
-  → 每张：LAYOUT 选型 + 组装「固定层 Prompt + 本张 CONTENT」
-  → 生图（角色参考 + 可选知识卡 style-lock）
-  → 只后盖水印
-  → QA
-  → 存 .jinger-pixel-assets/cards/<slug>/
-```
+### 1）CONTENT ANALYZER（生图前必须）
 
-### Shot list（多卡，必须等确认）
+读用户文章 / 主题（有 `article.md` 就读全文）。  
+按 `card-content-analysis.md` 产出：类型、核心观点、模块、隐喻、角色动作、**EXACT LABELS（逐字来自原文，禁止空想）**。
 
-每张写清：
+多卡：写成 shot list（每张对应文章哪一节/哪几个要点）。  
+单卡：一份完整 visual plan。  
+**用户确认前不批量生图。**
 
-- 页型（cover / pain / concept / steps / compare / pitfall / cta）  
+### 2）LAYOUT + STYLE
+
+按内容类型选版式（`card-layout-system.md`）。  
+风格固定层不动（`card-style-system.md`）：米白纯色底、RPG UI、像素 QC。
+
+### 3）CHARACTER
+
+加载 confirmed 角色包。  
+决定全身或半身：**看文字互动与排版占位**（见 `card-character-system.md`），不默认某一种。  
+生图优先：**以角色包图为底/强参考做 edit**（改姿势、道具、朝向），不要纯文案从零发明一张脸。
+
+### 4）IMAGE-2
+
+组装：固定层 Prompt + 本张【CARD CONTENT】（原文模块必须在）。  
+参考图：`clean` + `bust` +（若有）`sheet` + 气质锁（只锁版式，不锁样例身份）。  
+可分步：①信息图底板（弱角色/框）→ ②用 bust/clean edit 贴上讲解动作。
+
+**硬禁令：** 因 Cursor MCP 超时就删短「原文模块 / 发型锁 / 身份包」——超时就换通道、拆步重试，或如实说暂不能交合格图，**不要交付降质版凑数。**
+
+### 5）TEXT RENDERER（二期）
+
+仅当用户要求程序排字，或 Mode A 中文稳不住时开启。  
+本 Skill 一期不捆绑排字脚本；开启时 image-2 少画正文，坐标叠字后再出水印。
+
+### 6）水印 + QA
+
+后盖当前角色 watermark。  
+先做「角色包对照审核」，再过其余必查。
+
+保存：`.jinger-pixel-assets/cards/<slug>/shotlist.md` + `images/`。
+
+## Shot list 必填（多卡）
+
+- 页型；对应原文段落/小节  
 - CONTENT TYPE + LAYOUT CHOICE  
-- 中文标题 / HERO  
-- 这一页只讲什么  
-- CHARACTER ACTION（讲解动作，勿重复同一 pose）  
-- EXACT LABELS（连标点，禁止同义改写）  
-- 1–3 个像素图标/物件（不是复杂房间道具）  
-
-确认前不要批量生图。
-
-### 确认后生图
-
-1. Prompt = **固定层**（style + character rules + layout rules + pixel QC）+ **内容层**（本张 ARTICLE / MODULES / LABELS）。  
-2. 参考图：当前角色 **clean + bust +（若有）sheet** 一并传入，并读 spec；可选附上 `knowledge-card-editorial-3x4.png` **只锁版式气质**（勿把样例角色身份盖过当前角色）。  
-3. 背景：几乎纯色暖米白。人小、字与模块大。  
-4. 水印后盖，文案来自当前角色 spec。  
-5. **强制审核**：`qa-checklist.md` 先做「角色包对照审核」，再做其余必查。中文错漏：重画或局部修字，不要改走 HTML 成品方案。  
-
-## 文字模式（现实预期）
-
-- **Mode A（默认）**：图内短句由生图模型画出。适合概念卡、对比卡、步骤短句。要求可读、术语准确。  
-- **Mode B（可选，未默认开启）**：生图少字/无正文，再程序叠中文。仅当用户明确要求「程序排字」或长文密集到模型稳不住时再走；本 Skill 暂不捆绑排字脚本。
+- HERO / 标题  
+- MODULES + EXACT LABELS（来自原文，可含 1 句短解释，不只三个碎词）  
+- CHARACTER CROP：`bust` / `fullbody` / `multi-mini` + 选择理由（互动/占位）  
+- CHARACTER ACTION  
+- IDENTITY METHOD：`edit-from-package`（默认）或说明为何例外  
 
 ## 硬规则
 
-- 整张是**编辑式像素信息图**，不是复杂房间剧场，也不是 HTML 杂志贴图  
-- 先内容分析，再出图  
-- 角色是讲解者，体量约 1/4～1/3（或小分身进模块）  
+- 先分析原文，再出图；禁止靠模型想象力填知识  
+- 编辑式像素信息图；几乎纯色底；字与模块是主角  
+- 角色是讲解者；占位服从排版；全身/半身按需  
+- 身份来自角色包；优先 edit；出图后对照审核  
 - 固定 Style，可变 Layout  
 - 水印后盖  
-- 不要 Vox 黄黑拼贴、不要深色 Game Boy 整屏、不要 PPT SmartArt  
+- 禁止 Vox 拼贴、深色 Game Boy 整屏、PPT、复杂房间剧场  
+- 禁止「降质求通」交付  

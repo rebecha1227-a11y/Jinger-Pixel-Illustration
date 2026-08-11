@@ -2,6 +2,8 @@
 
 固定层。换文章时**不要改**这一层。只服务 3:4 知识卡片。
 
+流水线位置：LAYOUT 之后 → STYLE SYSTEM（本文件）→ CHARACTER → IMAGE-2。
+
 目标气质对齐：`assets/style-lock/knowledge-card-editorial-3x4.png`  
 （米白暖棕底 + 复古像素 + RPG/独立游戏 UI 模块 + 个人 IP 讲解者 + 信息模块化）
 
