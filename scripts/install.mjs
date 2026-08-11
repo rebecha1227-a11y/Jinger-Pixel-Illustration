@@ -18,7 +18,10 @@ const SKILL_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), ".
 const IGNORE = new Set([
   ".git",
   ".gitignore",
+  ".npmignore",
   ".DS_Store",
+  "HANDOVER.md",
+  "__pycache__",
   "node_modules",
   ".jinger-pixel-assets",
   "output",
@@ -42,6 +45,11 @@ function copyDir(src, dest) {
   }
 }
 
+function installDir(src, dest) {
+  fs.rmSync(dest, { recursive: true, force: true });
+  copyDir(src, dest);
+}
+
 function parseTargets(argv) {
   const flags = argv.filter((arg) => arg.startsWith("--")).map((arg) => arg.slice(2));
   const known = flags.filter((name) => name in AGENTS);
@@ -61,7 +69,7 @@ function main() {
 
   for (const name of targets) {
     const dest = path.join(home, AGENTS[name]);
-    copyDir(SKILL_ROOT, dest);
+    installDir(SKILL_ROOT, dest);
     installed.push(dest);
     console.log(`已安装到 ${dest}`);
   }

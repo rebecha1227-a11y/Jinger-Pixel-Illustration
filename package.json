@@ -13,9 +13,13 @@
     "PLAN.md",
     "agents",
     "assets",
+    "docs",
     "examples",
     "references",
-    "scripts",
+    "scripts/bootstrap_jinger.py",
+    "scripts/character_registry.py",
+    "scripts/install.mjs",
+    "style-references",
     "templates"
   ],
   "repository": {
