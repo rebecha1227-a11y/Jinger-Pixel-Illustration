@@ -241,6 +241,39 @@ def command_list(args: argparse.Namespace) -> None:
     print(json.dumps(result, ensure_ascii=False, indent=2))
 
 
+def command_doctor(args: argparse.Namespace) -> None:
+    """Check every local package and the active-character pointer."""
+    root = Path(args.root).expanduser().resolve()
+    issues: list[str] = []
+    manifests = sorted((root / "characters").glob(f"*/{MANIFEST_NAME}"))
+    for path in manifests:
+        try:
+            manifest = load_json(path)
+            slug = manifest.get("slug")
+            if not isinstance(slug, str) or slug != path.parent.name:
+                issues.append(f"slug does not match directory: {path}")
+                continue
+            if manifest.get("status") not in {"draft", "confirmed"}:
+                issues.append(f"invalid status in {path}: {manifest.get('status')}")
+            resolved_manifest(root, slug, allow_draft=True)
+        except (FileNotFoundError, ValueError, OSError, json.JSONDecodeError) as error:
+            issues.append(str(error))
+
+    try:
+        active_slug = current_slug(root)
+        active = resolved_manifest(root, active_slug)
+        if active.get("status") != "confirmed":
+            issues.append(f"active character is not confirmed: {active_slug}")
+    except (FileNotFoundError, ValueError, OSError, json.JSONDecodeError) as error:
+        if manifests:
+            issues.append(f"active character: {error}")
+
+    result = {"root": str(root), "packages": len(manifests), "issues": issues, "ok": not issues}
+    print(json.dumps(result, ensure_ascii=False, indent=2))
+    if issues:
+        raise ValueError("character package doctor found issues")
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Manage Jinger Pixel character packages")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -280,6 +313,10 @@ def build_parser() -> argparse.ArgumentParser:
     list_command = subparsers.add_parser("list", help="List local characters")
     list_command.add_argument("--root", required=True)
     list_command.set_defaults(func=command_list)
+
+    doctor = subparsers.add_parser("doctor", help="Validate local packages and the active character")
+    doctor.add_argument("--root", required=True)
+    doctor.set_defaults(func=command_doctor)
     return parser
 
 

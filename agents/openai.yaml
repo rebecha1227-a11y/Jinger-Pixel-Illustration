@@ -1,4 +1,4 @@
 interface:
   display_name: "Jinger Pixel Illustration"
-  short_description: "HD pixel personal IP: 16:9 article art + 3:4 knowledge cards"
-  default_prompt: "使用 $jinger-pixel-illustration。先问我这次要长文配图还是知识卡片，不要两套一起出。"
+  short_description: "高清复古像素 IP：长文配图与知识卡片"
+  default_prompt: "使用 $jinger-pixel-illustration。根据我提供的角色和内容，先锁定角色，再按已说明的成品类型完成配图；如果类型已明确，不要重复询问。"

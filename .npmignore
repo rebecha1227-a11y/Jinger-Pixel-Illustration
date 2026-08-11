@@ -6,4 +6,11 @@
 *.pyc
 node_modules/
 output/
+README.md
+PLAN.md
+QA_Log.md
+docs/
+style-references/
+templates/
+handover/
 package-lock.json

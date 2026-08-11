@@ -1,166 +1,70 @@
 # Jinger Pixel Illustration
 
-把一个**固定的高清复古像素个人 IP**，做成能反复用的配图。
+一个把固定高清复古像素个人 IP 反复用于内容配图的 Agent Skill。
 
-做这个 Skill，是因为很多人写长文、发小红书时，配图每次换一张脸、换一种画风，读者记不住「这是同一个人」。现成的开源 IP skill 又多是简笔画 / 扁平 3D，而且通常只做一种版式。这套想补上：**高清像素 + 先锁角色再出图 + 长文和知识卡都能用同一套 IP**。
+它支持两条独立路线：
 
-角色不一定是真人：宠物、表情包、动漫、品牌 IP、现成形象都可以。确认角色之后，可以做成两种成品（不要默认两套一起出）：
+1. **16:9 长文配图**：一张暖色封面，加上按文章视觉节拍生成的正文图。一个观点用迷你场景，步骤、清单、对比和结构用信息设计。
+2. **3:4 知识卡片**：原文驱动的编辑式像素信息卡。页面先定内容模块、版式和文字，再决定角色是否作为讲解者出场。
 
-1. **16:9 长文配图**：必须有封面 + 正文图。封面用暖色简单像素场景；正文按这一张要讲什么来画（一个观点用迷你剧场，步骤/清单用说明图）。  
-   **多用于**：微信公众号、推特长文分享、小红书长文分享等。
-2. **3:4 知识卡片**：米白纯色底 + 像素/RPG UI 模块 + 角色讲解者。默认 6–8 张（也可单卡深讲）。流水线：原文分析 → 版式 → 风格 → 角色包 edit → 生图。
-   **多用于**：小红书图文笔记等。
+两条路线共用一个已确认的角色包，但不会默认同时生成。
 
-没有确认角色之前，不要配图。
-
-## 和其他类似 skill 的区别
-
-大多数开源 IP skill 是简笔画 / 扁平 3D / 小黑手绘，而且通常只做长文配图。这套是：
-
-- 高清像素
-- 长文 + 知识卡片两种形态
-- 卡片：角色当讲解者；编辑式像素信息图，不是 HTML 排版卡，也不是复杂房间剧场
-- 构图写进 prompt，不靠「默认版式」开关
-
-## 仓库结构
-
-这个仓库**本身就是 Skill**。GitHub 打开就能看到本 README；克隆后目录名改成 `jinger-pixel-illustration` 即可安装。
+## 核心流程
 
 ```text
-.
-├── README.md              ← 你现在看的这份
-├── SKILL.md               ← Agent 入口
-├── LICENSE / LICENSE-ASSETS
-├── PLAN.md                ← 设计笔记
-├── assets/                ← Jinger 画风锁 + 作者示范图（不是给你当脸用）
-├── docs/how-to/           ← README「怎么用」流程说明图
-├── examples/
-│   ├── jinger/            ← 作者示范设定（配合 assets/）
-│   └── ania/              ← 公开角色包示例（非商用，仅作示例参考）
-├── references/            ← 创建角色 / 概念→画面 / 长文 / 卡片细则
-├── scripts/               ← 安装脚本 + 本地角色包管理
-└── templates/             ← 仅无生图时的应急占位
+锁角色 → 读内容 → 定每张图的任务 → 选择视觉语法
+→ 生成 → 对照返修 → 正确交付
 ```
 
-## 安装
+角色可以来自真人、宠物、表情包、动漫角色、品牌 IP、吉祥物或已有形象。没有 `confirmed` 角色时，Skill 会先创建或导入角色包，展示干净主锚点和半身锚点，等用户明确确认后才开始配图。
 
-### 方式一：通用 Skills CLI（推荐）
+## 安装
 
 ```bash
 npx skills add rebecha1227-a11y/Jinger-Pixel-Illustration -g -y
 ```
 
-### 方式二：本仓库 npx 脚本
-
-会把 Skill 装到本机的 Cursor / Claude Code / Codex skills 目录：
+或者：
 
 ```bash
 npx github:rebecha1227-a11y/Jinger-Pixel-Illustration
-```
-
-只装其中一个客户端：
-
-```bash
-npx github:rebecha1227-a11y/Jinger-Pixel-Illustration --cursor
-npx github:rebecha1227-a11y/Jinger-Pixel-Illustration --claude
 npx github:rebecha1227-a11y/Jinger-Pixel-Illustration --codex
 ```
 
-### 方式三：git clone
+安装后重启客户端，然后说：
 
-Claude Code / Codex：
-
-```bash
-git clone https://github.com/rebecha1227-a11y/Jinger-Pixel-Illustration.git \
-  "${HOME}/.claude/skills/jinger-pixel-illustration"
+```text
+使用 $jinger-pixel-illustration
 ```
 
-Cursor：
+## 你需要提供什么
 
-```bash
-git clone https://github.com/rebecha1227-a11y/Jinger-Pixel-Illustration.git \
-  "${HOME}/.cursor/skills/jinger-pixel-illustration"
+| 内容 | 示例 |
+|---|---|
+| 角色参考 | 真人照、宠物、表情包、已有插画、品牌吉祥物 |
+| 成品类型 | 16:9 长文、3:4 知识卡片，或两者 |
+| 内容来源 | 文章 Markdown、正文、网页内容或已确认的要点 |
+| 可选约束 | 水印、Logo、产品图、特殊道具、输出数量 |
+
+知识卡片的数量由信息模块决定，不为了固定页数填充内容；单一聚焦问题也可以只做一张深讲卡。最终系列默认不超过九张，除非用户明确要求不同计划。
+
+## 文件结构
+
+```text
+SKILL.md                         Agent 入口与路由
+agents/openai.yaml               客户端显示信息
+references/                      按需加载的工作流和设计合同
+assets/                          角色像素与三类成品的画风锁
+examples/                        公开示例，不是默认试用角色
+scripts/                         角色注册与确定性校验
 ```
 
-已有文件夹时，也可以把本仓库复制进去，**目录名保持** `jinger-pixel-illustration`。
+运行时生成的角色包和成品都保存到项目自己的 `.jinger-pixel-assets/`，不会写进 Skill 仓库。
 
-## 怎么用
+## 无生图能力时
 
-![封面：固定像素角色，配长文或知识卡](docs/how-to/00-cover.png)
-
-### 为什么要先固定角色
-
-每次换脸，读者记不住；固定成同一套像素 IP 后，长文和知识卡才像一个人写的。
-
-![不固定 vs 固定后](docs/how-to/01-pain.png)
-
-### 你要提供什么
-
-至少准备一类「画谁」的素材，再加这次要配的内容：
-
-| 你给 Skill | 说明 |
-|---|---|
-| 角色参考 | 真人照、宠物、表情包、动漫/插画角色、品牌 IP、已有设定图，任选；要你有权用 |
-| 这次做什么 | 只要长文 / 只要知识卡片 / 两套都要 |
-| 长文 | 文章全文，或本地 Markdown / 网页正文 |
-| 知识卡主题 | 要讲清楚的几个观点（卡片会先出 shot list） |
-| 可选加料 | 产品 Logo、产品图、场景描述、气质词、水印号、特殊要求 |
-
-没有确认角色之前，不会开始配图。
-
-### 你会得到什么
-
-| 成品 | 规格 |
-|---|---|
-| 像素角色包 | 干净全身（或头身锚点）+ 半身/头身 + 设定文字；三视图可选 |
-| 16:9 长文套图 | **1 张封面 + 若干正文图**。封面暖色场景；正文按这一张要讲什么来画 |
-| 3:4 知识卡片 | 默认 6–8 张。原文驱动；角色包 edit 保一致性；全身/半身按排版选 |
-| 水印 | 每张右下角后盖，文案来自你的角色设定，不是 AI 画上去的 |
-
-![你提供什么，能得到什么](docs/how-to/03-give-get.png)
-
-同一套像素角色可以反复给下一篇文章 / 下一套卡片用。
-
-### 怎么走
-
-1. **选成品**：只要长文 / 只要知识卡片 / 两套都要。没说清不会默认两套都出。
-2. **定角色**  
-   - A. 已有现成形象 → 发图  
-   - B. 用参考素材创建 → 真人照、宠物、表情包、动漫、品牌 IP 都可以  
-
-![定角色：原素材 → 像素角色](docs/how-to/02-create-character.png)
-
-3. **确认门闩**：先看干净全身 + 半身。说「确认」才进入配图。三视图/设定板是可选项，不要也可以。
-4. **出图**  
-   - 长文：直接按文章生成封面 + 正文图  
-   - 知识卡片：原文分析 → shot list（含全身/半身选择理由）→ 你点头 → 角色包 edit 生图
-5. **可复用**：下次换文章或换主题，还是同一个像素角色。
-
-![怎么用：四步](docs/how-to/04-four-steps.png)
-
-![确认门闩：说确认才配图](docs/how-to/02-lock-first.png)
-
-![同一角色，换主题还能用](docs/how-to/05-reusable.png)
-
-### 角色包长什么样
-
-公开示例见 [`examples/ania/`](examples/ania/)（全身 / 半身 / 三视图 + 设定）。  
-Ania 来自漫画/二次元参考造型，**非商用，仅作为公开示例给模型与填写模板参考**；请创建你自己有权使用的 IP，不要把 Ania 当成默认试用脸。仓库里的 Jinger 图只作画风锁与作者示范。
-
-![Ania 干净全身](examples/ania/character-reference-clean.png)
-
-![Ania 半身](examples/ania/character-bust.png)
-
-## 无生图时
-
-Skill 会交出完整 prompt、参考图路径和水印计划，不会假装图片已经生成。
+Skill 会交付角色锚点、visual plan、完整 Prompt、参考图路径和保存计划，并明确说明暂时没有 PNG 成品，不会伪装成已完成。
 
 ## 授权
 
-- 工作流、脚本、模板、文档：MIT，见 [LICENSE](LICENSE)
-- Jinger 角色图与设定：不在 MIT 内，见 [LICENSE-ASSETS](LICENSE-ASSETS)
-- `examples/ania/` 为公开填写示例（漫画/二次元参考造型，**非商用，仅作示例与模型参考**）；请创建你自己有权使用的 IP，不要把 Ania 当成默认试用脸
-
-## 致谢
-
-工作流结构参考了 [adrianpunk/punk-ip-illustrations](https://github.com/adrianpunk/punk-ip-illustrations)、[helloianneo/ian-xiaohei-illustrations](https://github.com/helloianneo/ian-xiaohei-illustrations)、[EverettFish/ip_illustration_for_yourself](https://github.com/EverettFish/ip_illustration_for_yourself)。
+工作流、脚本和文档见 [LICENSE](LICENSE)。Jinger 角色图和相关资产见 [LICENSE-ASSETS](LICENSE-ASSETS)。公开示例只用于说明角色包格式，请使用自己有权使用的素材。

@@ -1,66 +1,45 @@
-# 长文配图工作流
+# 16:9 Article Workflow
 
-前提：当前角色 `confirmed`。先读 `style-dna.md`、`concept-visual-language.md` 与当前角色 `character-spec.md`。
+Prerequisite: the current character is `confirmed`. Read `visual-planning.md`, `style-contracts.md`, `prompt-contracts.md`, and `qa-repair.md` as needed.
 
-## 输入
+## Input and image count
 
-完整文章、本地 Markdown、网页正文或单个观点。读不完整文就停，不靠标题瞎配。
+Use the user's article, Markdown file, or supplied outline. Select distinct visual beats from the thesis, emotional arc, examples, and turning points. Do not assign one image per paragraph.
 
-## 数量
+Always include one cover. Choose the body-image count from information density and article length. A short article may need one to three body images; a long article may need more, but never add an image whose job duplicates another. Keep the body set within eight images unless the user explicitly requests more.
 
-用户指定时优先遵循；指定「N 张」时默认理解为 **1 封面 + (N-1) 正文**，除非用户说不要封面。封面不能省。
+## Storyboard
 
-未指定时按信息密度（**正文张数不含封面**）：
+Before generation, write one row per image:
 
-| 内容规模 | 正文配图 | 另加封面 | 整套合计 |
-|---|---:|---:|---:|
-| 单个观点或约 500 字以内 | 1 | +1 | 2 |
-| 约 500—1500 字 | 2—4 | +1 | 3—5 |
-| 约 1500—3500 字 | 3—6 | +1 | 4—7 |
-| 约 3500 字以上 | 4—8 | +1 | 5—9 |
+```text
+IMAGE: 00-cover / 01-topic
+SOURCE ANCHOR: exact section or idea
+JOB: one sentence this image makes understandable
+GRAMMAR: scene / process / comparison / timeline / evidence / checklist
+SCENE: one concrete action or visual metaphor
+CHARACTER: role, action, expression, crop
+PROPS: one to three essential objects
+EXACT TEXT: exact title or labels, or none
+NOT THIS IMAGE: responsibility reserved for another image
+```
 
-正文默认不超过 8；整套不超过 9。合并重复内容，不按章节平均塞，不为凑数而画。
+For ordinary ideas, use `scene`: one character, one core object, one action, and one visible result. For ordered actions, lists, comparisons, or structure, use an explainer grammar with readable labels, numbered nodes, arrows, or matched columns. Do not force a character into every node.
 
-## 认知锚点
+## Cover
 
-优先画：全文总判断、易误解的机制、逻辑转折、冲突/反直觉、可行动的结论、只靠文字不好懂的过程。
+Use the warm cover style-lock. Create a simple warm pixel setting, a clear topic signal, one useful character action, and no paragraph text. The cover may use a different background from body images.
 
-每张职责不同。封面承担「这篇文章是什么 + 角色在场」；正文每张只解释一个锚点。**本套里不要两张图讲同一件事。**
+## Body continuity
 
-## 内部方案（直接执行，不等第二次确认）
+Use the article body style-lock for every non-cover image. Once the first body image passes, use it as the body series master. Keep its background, border treatment, pixel density, palette logic, and type roles across the remaining body images. Change the job, scene, action, and relevant props.
 
-每张先写短 visual plan（想不清就不要调生图），再确定：
+## Identity and generation
 
-- 序号与英文 slug（封面固定 `00-cover`）
-- **insert_after**：插在哪一段后面（封面 = 文首标题下）
-- **job**：这一张只让人看懂什么（一句话）
-- **not_this_image**：不要和本套其他图撞题
-- **exact_labels**：要画的中文，连标点；禁止同义改写
-- **character_budget**：`none` / `1 accent` / `1 hero`（说明图默认 none 或 accent；迷你剧场才用 hero）
-- 用途：封面 or 正文
-- 背景模式：封面 = 暖色简单像素场景，底色可与正文不同（相同也可以）。正文图同一套必须统一底色、边框、风格。普通观点 → 白底迷你剧场；列步骤 / 清点 / 对比 → `explainer-workflow.md`
-- 表现模式：流程拆解 or 核心动作 or **说明图清单**
-- 视觉比喻 / 角色动作（budget=none 时可空）
-- 1–3 个主要物件
+Pass the current clean anchor, bust, optional sheet, and short spec-derived identity lock. Never use a style-lock sample character as the user's character. Generate each image separately and inspect it immediately.
 
-完整字段见 `prompt-templates.md` 的 visual_plan。
+When a user selects an accepted image as the preferred base, edit that image or its corresponding series master. Do not restart the whole set from zero.
 
-## 生成
+## Text and delivery
 
-1. **身份全量参照**：传入当前角色 `character-reference-clean` + `character-bust` +（若有）`character-sheet`；读 `character-spec.md` 写短 Character Lock。禁止只看一张全身。不要把设定板排版/色板框画进成图。
-2. **气质锁分流**：封面加 `assets/style-lock/warm-pixel-scene-16x9.png`；正文加 `assets/style-lock/article-body-editorial-16x9.png`（只锁画风/版式气质，勿复制样例角色身份）。
-3. 先出封面；再出第一张正文。第一张正文过关后，把它当**本套正文统一锁**（底色、边框、像素风格），后面正文图跟它统一。封面不必跟正文同一底色。
-4. 按 `prompt-templates.md` 的组装顺序拼 prompt，每张单独调用一次图像工具。
-5. 生成后**排版叠加**当前角色水印到右下角，不要让 AI 画水印。
-6. **强制审核**：过 `qa-checklist.md`——先做「角色包对照审核」，再做必查 + 系列/缩略图。不要设固定重试上限；每次只针对失败项重试，直到 PASS。用户指定「这张更好」时，以该图为定稿底再改，不要另起一张从零画。
-7. 保存到 `.jinger-pixel-assets/illustrations/<article-slug>/`
-
-无生图：输出每张 prompt + 参考图路径（列出 clean/bust/sheet/spec）+ 建议插入位置 + 水印文案，不假装 PNG 已完成。
-## Markdown 插入
-
-默认只报告建议位置。用户明确说「插入」且文件可写时：
-
-- 先复制一份备份
-- 用唯一段落或完整句子定位，插在该段落后
-- 不插进句子中间、列表内部、引用块
-- 不要两张图连续堆叠
+Keep labels short and exact. Use almost no text for a mini scene; use complete short phrases for steps and comparisons. Do not render paragraphs, invented labels, or a watermark in the image model. Save to `.jinger-pixel-assets/illustrations/<slug>/` and run `qa-repair.md` before delivery.

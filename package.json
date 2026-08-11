@@ -1,7 +1,7 @@
 {
   "name": "jinger-pixel-illustration",
-  "version": "1.0.0",
-  "description": "Install the Jinger Pixel Illustration agent skill (16:9 article art + 3:4 knowledge cards).",
+  "version": "1.1.0",
+  "description": "Install the Jinger Pixel Illustration agent skill with source-grounded visual planning and QA (16:9 article art + 3:4 knowledge cards).",
   "bin": {
     "jinger-pixel-illustration": "./scripts/install.mjs"
   },
@@ -9,18 +9,18 @@
     "SKILL.md",
     "LICENSE",
     "LICENSE-ASSETS",
-    "README.md",
-    "PLAN.md",
     "agents",
     "assets",
-    "docs",
     "examples",
     "references",
     "scripts/bootstrap_jinger.py",
     "scripts/character_registry.py",
+    "scripts/validate_skill.py",
+    "scripts/validate_visual_plan.py",
+    "scripts/validate_delivery.py",
     "scripts/install.mjs",
-    "style-references",
-    "templates"
+    "LICENSE",
+    "LICENSE-ASSETS"
   ],
   "repository": {
     "type": "git",

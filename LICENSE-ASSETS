@@ -7,7 +7,7 @@ public demo character:
 - assets/character/jinger-pixel-bust.png
 - assets/character/jinger-pixel-fullbody.png
 - assets/character/jinger-turnaround.png
-- assets/style-lock/warm-pixel-scene-16x9.png
+- assets/style-lock/warm-pixel-scene-16x9.jpg
 - examples/jinger/character-spec.md
 
 You MAY use these images as style-lock input when generating YOUR OWN

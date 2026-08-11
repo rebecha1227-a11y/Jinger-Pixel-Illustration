@@ -1,138 +1,106 @@
 ---
 name: jinger-pixel-illustration
-description: 高清复古像素个人 IP 插图 Skill：可从真人照、宠物、表情包、动漫角色、品牌 IP 或现成形象创建并确认角色，再生成 16:9 长文配图（必含封面+正文）或 3:4 编辑式像素知识卡片（纯色底+RPG UI 模块+角色当讲解者）。Use when 用户提到个人 IP、像素配图、角色设定、宠物像素、表情包 IP、品牌吉祥物、长文插图、16:9、知识卡片、3:4、小红书卡片、Jinger，或要把观点画成固定角色插图。
+description: Create and reuse a confirmed high-definition retro-pixel personal IP character from a person, pet, mascot, meme, anime, brand, or existing illustration. Generate 16:9 article illustration sets or 3:4 editorial knowledge-card series with source-grounded visual planning, consistent identity, exact text controls, and visual QA. Use when the user asks for a personal IP, pixel illustration, character package, character sheet, article visuals, long-form illustrations, knowledge cards, Xiaohongshu cards, 16:9 or 3:4 visual explainers, or wants an idea turned into a recurring character illustration.
 ---
 
 # Jinger Pixel Illustration
 
-把一个**已确认的高清像素角色**做成两种成品。不要默认两套一起出。
-
-项目名是 Jinger Pixel Illustration；**用户画的永远是自己的当前角色**，不是示范角色。
-
-## 每次开始
-
-1. 读本文件路由，再按需读 `references/`，不要一次塞完。
-2. 用 `scripts/character_registry.py` 解析当前角色（见 `references/character-package.md`）。
-3. 按下面顺序决策，缺一步就停下来问。
-
-### 第一步：这次做什么
-
-用户已经说清（「给这篇文章配图」「做知识卡」「两个都要」）就不要再问。
-
-否则先发引导，**必须问到 1 / 2 / 3**：
+Follow one path for every job:
 
 ```text
-欢迎使用 Jinger Pixel Illustration。
-
-这个 Skill 可以把一个固定的高清像素角色，做成下面两种图（先选这次要哪一种，不会默认两套都出）：
-
-1. 16:9 长文配图（必含封面 + 正文图；封面暖色场景；正文按这一张要讲什么来画）
-2. 3:4 知识卡片（米白纯色底 + 像素/RPG UI + 角色讲解者；原文驱动；全身/半身按排版选）
-
-请先选这次要做的：
-1. 只要长文配图
-2. 只要知识卡片
-3. 两套都要
+lock character -> read source -> assign each image one job -> choose visual grammar
+-> generate -> compare with identity/style/content contracts -> repair -> deliver
 ```
 
-选 3 才两条都跑。只选 1 或 2 就只做那一条。
+The identity belongs to the user's current character. The HD retro-pixel visual language belongs to this Skill. Do not use the bundled example character as a default user identity.
 
-### 第二步：画谁
+## 1. Route the request
 
-有 `confirmed` 当前角色：报角色名，不要重问 A/B。
+Ask only for information that is genuinely missing. If the user already named the output, start that route directly.
 
-没有 confirmed 角色：**先不要配图**。在引导里补上：
+- `character`: create or import a reusable character package.
+- `article`: make a 16:9 set with one cover and source-grounded body images.
+- `card`: make a 3:4 knowledge-card page or series.
+- `both`: run the requested routes separately; never assume both.
+
+If the output type is unclear, ask the user to choose `article`, `card`, or `both`. If no character is confirmed, pause image production and use `references/character-workflow.md`.
+
+Read only the references required by the route:
+
+| Need | Read |
+|---|---|
+| Create/import/confirm a character | `character-workflow.md`, `character-spec.md` |
+| Turn source material into image jobs | `visual-planning.md` |
+| 16:9 long-form images | `article-workflow.md`, `style-contracts.md`, `prompt-contracts.md`, `qa-repair.md` |
+| 3:4 knowledge cards | `card-workflow.md`, `card-design-contract.md`, `style-contracts.md`, `prompt-contracts.md`, `qa-repair.md` |
+| Tool limits, storage, or Markdown insertion | `runtime-delivery.md` |
+
+## 2. Enforce identity state
+
+Resolve the current character with `scripts/character_registry.py`. Only a `confirmed` character may enter an article or card route.
+
+Use the full confirmed package:
+
+1. `character-reference-clean.png`: full-body proportion, silhouette, outfit.
+2. `character-bust.png`: face, hair, expression, head accessories.
+3. `character-sheet.png`, when present: views, accessory details, palette.
+4. `character-spec.md`: fixed traits, allowed variation, forbidden changes, watermark.
+
+Apply this precedence when sources disagree: the user's latest explicit instruction, then the confirmed character package, then the accepted series master image, then the selected style-lock, then layout references. Style-lock and layout references may never replace the user's identity.
+
+Do not generate a final image from a draft package. Do not paste the whole character spec into a prompt; extract a short identity lock from its fixed traits and signature silhouette.
+
+## 3. Plan before generating
+
+Read the source before selecting scenes or pages. Create one `visual_plan` per image using `references/visual-planning.md`.
+
+Every plan must state:
+
+- source anchor and communication job;
+- visual grammar and composition;
+- exact text, if any;
+- essential props and the difference from other images;
+- whether the character is required, optional, or absent;
+- the action/binding that makes the character informative rather than decorative.
+
+Do not split an article mechanically by paragraph. Do not invent facts, labels, tips, dates, charts, or source modules. When decisive source content is missing, ask before generating.
+
+## 4. Generate by route
+
+### 16:9 article route
+
+Read `article-workflow.md`. Produce one warm scene cover plus as many body images as the article's distinct visual beats require. Use a mini scene for one idea and an explainer grammar for process, checklist, comparison, or structure. Keep non-cover body images visually continuous.
+
+### 3:4 card route
+
+Read `card-workflow.md` and `card-design-contract.md`. Extract information modules first, then group them into pages with one communication job each. Use a cover only for a multi-card series. Use a CTA only when the source or user asks for an action. Permit one focused deep-dive card; do not pad a short source to reach a fixed count. Never shrink text to fit a character.
+
+Use `none`, `bust`, `fullbody`, or `multi-mini` only after the information grid and character bindings are decided. A character is optional on a self-explanatory table, flow, comparison, or file tree.
+
+### Prompt assembly
+
+Use `prompt-contracts.md`. Assemble prompts in this order:
 
 ```text
-如果还没有确认过角色，请再选角色从哪来：
-A. 我已经有现成形象（像素图、插画、设定板都行，请发图）
-B. 我有参考素材，想做成高清像素角色
-   （真人照、宠物、表情包、动漫角色、品牌 IP 都可以）
-
-选 B 的话，请先看「参考素材要求」。
+OUTPUT -> IDENTITY -> STYLE -> SOURCE IDEA/PAGE JOB -> STRUCTURE
+-> CHARACTER/ACTION -> PROPS -> COMPOSITION -> EXACT TEXT
+-> SERIES CONTINUITY -> NEGATIVE CONSTRAINTS
 ```
 
-不要提供「试用示范角色 / 启用内置角色」入口。
+Use the relevant style-lock as a style reference only. For cards, prefer edit-from-package or a bottom-first, character-second workflow when identity drift is likely.
 
-然后读 `references/ip-builder.md`，走 A 导入或 B 从参考素材创建。设定模板见 `references/character-spec.md`。  
-先出主锚点 + 半身/头身；**三视图是可选项**，确认不依赖它。停在确认门闩，用户没说「确认 / 定稿 / 就用这个」之前不能出成品。
+## 5. Inspect, repair, and deliver
 
-### 第三步：出图
+Open every generated image. Apply `qa-repair.md` in this order:
 
-每张先写 visual plan，想不清就不要调生图：
+1. identity and fixed traits;
+2. source meaning and exact information;
+3. pixel construction and selected style contract;
+4. layout, readability, and character footprint;
+5. watermark and file delivery.
 
-1. 插在文章哪一段后面  
-2. 这一张只让人看懂什么（一句话）  
-3. 不要和本套哪张图撞题  
-4. 要画的中文（连标点，禁止同义改写）  
-5. 角色要不要出场（说明图默认人小或不出场）
+Repair only the failing page or element and retain accepted pages as continuity references. Do not mark a page PASS after deleting content or identity constraints. If repeated attempts still fail, change the generation strategy and report the unresolved constraint instead of silently lowering the standard.
 
-再把构图、动作、字写进 prompt，交给生图模型去画。不要先套一个「默认版式」。
+Save final assets under `.jinger-pixel-assets/`: articles in `illustrations/<slug>/`, cards in `cards/<slug>/images/`. Add the current character's watermark after generation; do not ask the image model to draw it. Do not modify the user's Markdown unless the user explicitly requests insertion, and back it up first.
 
-`prompt-templates.md` 里是一些**写得好的现成句子**（封面、迷你剧场、动作序列、知识卡、清单介绍页），按这一张的内容去取用、改写，不是让用户或 Agent 先选模式再出图。
-
-细则按成品翻：长文 `article-workflow.md`；知识卡 `card-workflow.md`（并按需读 `card-content-analysis.md` / `card-style-system.md` / `card-layout-system.md` / `card-character-system.md`）。若这一张本身就是在清点步骤/成品，可参考 `explainer-workflow.md` 的排法写进同一条 prompt。再读 `style-dna.md`。拼完 prompt 过后 `qa-checklist.md`。
-
-## 硬规则
-
-- 画风：高清像素。不是 8-bit、简笔画、3D 公仔、写实摄影。
-- 每个角色确认后锁死自己的记忆点（神态、剪影、标志色/花纹/服装），第一版不换装、不改认不出。
-- 长文一套必须有 **1 张封面 + 若干正文图**。封面 = 暖色简单像素场景，底色可与正文不同。同一篇文章的正文图必须统一底色、边框、风格。普通观点用迷你剧场；步骤/清单/对比用说明图（信息设计优先，不必每格都有人）。
-- 知识卡片默认 6–8 张，最多 9 张（也可单卡深讲）。流水线：原文 → 内容分析 → 黄金样张合同 → 版式模具 → 风格 → 角色包（edit 优先，可不出人）→ 生图 →（二期可选程序排字）→ 水印与 QA。先读 `references/card-gold-standard.md`；气质对齐 `knowledge-card-editorial-3x4.png`，首张通过后用通过图锁住整套边框、纸面、字体分工和模块语言。全身/半身/`none` 按排版与文字互动选择。禁止「降质求通」交付。
-- 3:4 信息图页不强制出角色：表格、流程、对比、文件树已经自洽时，`character_budget: none` 是首选。角色出场用“预留槽位 + 实际画面 footprint”判断，不用单一页面高度判断：全身可以较高但必须窄、待在保留列；半身或多处分身的总着色面积必须受控。角色须通过手持、指向、贴入、检查、连接箭头等动作绑定具体文字模块（职能测试：去掉人信息关系仍完全成立则不出人）。
-- 图内文字按这一张需要来写进 prompt：演戏/一个观点就少字；步骤清单就把编号短句写清楚。知识卡模块须来自原文。不要段落，也不要该讲明白时只剩两个字。
-- 水印文案来自**当前角色** `character-spec`，不要套用示范角色的水印号。水印后盖，不让模型画。
-- 项目成品统一落到 `.jinger-pixel-assets/`（长文 `illustrations/`，知识卡 `cards/<slug>/images/`）；不能只留在客户端默认生成目录。
-- 无生图能力时诚实说明，只交 prompt 和保存计划。`templates/` 里的 HTML 只是应急预览，**不是目标气质**。
-- 默认不改用户 Markdown；只有用户明确说「插入」才写入，并先备份。
-- 不猜年龄、职业、民族等敏感属性；不把用户参考素材上传到公开仓库。
-
-## 生图能力要求（重要）
-
-本 Skill **依赖可调用图像生成/编辑模型的 Agent**。没有生图能力时，只能交付 prompt、参考图路径与保存计划，不能假装 PNG 已完成。
-
-常见可用模型示例（不限于此，以你当前 Agent 实际能调到的为准）：
-
-- GPT-Image-2（image-2）
-- Nano Banana 2
-- Imagen 4
-- Seedream 5.0 Lite
-- Qwen-Image-3.0
-- 以及其他支持「文生图 / 图生图 / 多参考编辑」的模型
-
-### 通道优先级（按客户端）
-
-1. **能直连生图模型时优先直连**（少中转、少超时）。例如在 **Codex** 中优先直接调用内置 **GPT-Image-2** 生图/编辑，不要绕去不可靠的中转。
-2. **完整内容层、角色身份锁、发型锁不能因为超时被删掉。** 失败就换直连、单目标 edit、或分步（底板→贴角色）；禁止「砍 prompt 凑数交付」。
-3. 每次生成后都要实际查看成图；文字、版式、角色比例、互动或发型不合格就针对问题重绘，直到 PASS。
-
-### 在 Cursor 里怎么用生图（简要）
-
-Cursor 聊天本身通常**不能**把聊天模型直接换成 image-2；需要通过 **MCP 等桥接**把生图工具挂进 Agent，例如配置 `gpt-image-2` / `user-gpt-image-2` 一类 MCP，并在本机放好 API Key（**不要**把密钥写进仓库或 Skill 文件）。
-
-建议：
-
-- 工具就绪后，用 `edit_image` / `generate_image` 按本 Skill 的参考图与 prompt 出图  
-- 复杂卡优先 **分步** 或 **edit-from-package**，避免一次塞过多参考导致超时  
-- 若 MCP 反复超时：把完整 prompt + 角色包路径交给 **Codex 或其他能直连 image-2 的 Agent** 出图，再把成品拷回项目目录；**不要**为求通而删掉身份锁/原文模块  
-
-细则仍以各客户端当前文档为准；本段只说明「Skill 需要生图通道」与推荐优先级。
-
-## 画风锁
-
-创建或转换新角色时，用捆绑示范像素图**只锁颗粒、密度、上色**，规则见 `references/style-dna.md` 的「画风锁」。
-
-示范图路径在 `assets/character/` 与 `assets/style-lock/`（封面 / 长文正文 / 知识卡三套气质锁分开）。设定说明在 `examples/jinger/`。公开填写示例在 `examples/ania/`。
-
-出图时身份必须对照当前角色包的 **全身 + 半身 +（若有）sheet + spec**；出图后强制过 `qa-checklist.md` 的「角色包对照审核」。
-
-画风锁不能盖过当前角色的身份。不要把示范角色设成用户的当前角色。
-
-## 无生图时怎么说
-
-> 现在不能直接生成像素图。我会把完整 prompt、参考图路径和水印计划准备好；有生图能力后再按同一套规范出图。HTML 模板只在你明确要求「先看个占位」时才用，不是成品方向。
-
-## 作者本地
-
-若工作区已有 `.jinger-pixel-assets/` 且当前角色已 `confirmed`，直接配图。  
-仅作者可运行 `scripts/bootstrap_jinger.py --i-am-the-author`。开源用户不要跑这个脚本。
+When image generation is unavailable, read `runtime-delivery.md` and deliver a complete character/visual plan, prompt package, reference paths, and save plan without pretending that PNGs exist.
