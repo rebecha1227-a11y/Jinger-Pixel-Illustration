@@ -5,7 +5,7 @@
 流水线位置：LAYOUT 之后 → STYLE SYSTEM（本文件）→ CHARACTER → IMAGE-2。
 
 目标气质对齐：`assets/style-lock/knowledge-card-editorial-3x4.png`  
-（米白暖棕底 + 复古像素 + RPG/独立游戏 UI 模块 + 个人 IP 讲解者 + 信息模块化）
+（米白暖棕底 + 复古像素 + RPG/独立游戏 UI 模块 + 信息模块化；只学版式/密度/色纪律，不学样例角色脸）
 
 长文封面锁用 `assets/style-lock/warm-pixel-scene-16x9.png`；长文正文锁用 `assets/style-lock/article-body-editorial-16x9.png`。  
 知识卡不要混用长文锁。
@@ -33,14 +33,26 @@ Hair = grouped pixel strands, not smooth painted strands.
 Clothing folds = deliberate pixel shading. Edges = controlled stair-stepping.
 ```
 
-## 色彩
+## 色彩纪律（硬约束）
 
-克制的暖色复古盘：
+知识卡用**克制双色逻辑**，不要每张换一盘彩虹：
 
-- 主：warm ivory / cream、light beige
-- 结构：warm cocoa brown、dark espresso
-- 点缀：muted peach、dusty pink、subtle gray
-- 角色自身配色作锚点；霓虹色除非强调否则不用
+| 层级 | 用法 | 示例 |
+|---|---|---|
+| 底 | 几乎纯色暖米白 / 象牙 | `#F5F0E8` 一带 |
+| 结构 | 深棕 / 炭灰：标题、边框、模块线、正文 | cocoa / espresso / `#2B2B2B` |
+| 强调 | **整张只选 1 个强调色** | 箭头、关键词高亮、关键 UI；Jinger 套图可从角色固有色里选草莓粉发色 **或** 奶油毛衣色当强调，**不要两个一起抢** |
+| 灰 | 可选弱底块，不算第二套品牌强调色 | 浅灰模块底 |
+
+禁止：霓虹第三色、每张换高饱和装饰色、复杂渐变背景。  
+角色服装/头发按角色包固有色上色（那是身份，不是「又开一盘强调色」）。
+
+写入 prompt 时可加：
+
+```text
+COLOR DISCIPLINE: cream/ivory background + dark brown/black structure text and frames.
+Exactly ONE accent color for emphasis (arrows/keywords/key UI). No extra saturated decoration colors.
+```
 
 ## 背景（静儿硬偏好）
 
@@ -52,4 +64,4 @@ Clothing folds = deliberate pixel shading. Edges = controlled stair-stepping.
 
 ## 系列感
 
-同一套知识卡应像「同一本个人知识宇宙的连续页」：同一角色、同一色盘、同一 UI 语言；变的是版式与内容模块。
+同一套知识卡应像「同一本个人知识宇宙的连续页」：同一角色、同一色纪律、同一 UI 语言；变的是版式模具与内容模块。

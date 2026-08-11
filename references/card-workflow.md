@@ -19,7 +19,7 @@ STYLE SYSTEM              ← card-style-system.md
       ↓
 CHARACTER SYSTEM          ← card-character-system.md（角色包底图 / edit）
       ↓
-IMAGE-2                   ← 视觉素材（一期含短句；二期可少字）
+IMAGE-2 / 生图模型（直连优先）  ← 视觉素材（一期含短句；二期可少字）
       ↓
 TEXT RENDERER（二期可选） ← 程序叠中文；一期默认不做
       ↓
@@ -32,7 +32,7 @@ FINAL 3:4 + 后盖水印 + QA
 |---|---|---|
 | 文字 | Mode A：短句由 image-2 画进图 | Mode B：image-2 少字/无正文 → TEXT RENDERER 叠中文 |
 | 角色 | 角色包全量参照；优先 **edit 改姿态**，禁止从零空想重画一个人 | 同左 |
-| 通道 | 完整内容层 + 身份锁必须保留；**禁止**为躲超时砍掉原文模块/发型锁 | 可 Codex 直连或分步：底板 → 贴角色 |
+| 通道 | **能调生图模型的 Agent** 上运行；直连优先（如 Codex→GPT-Image-2）；完整内容层 + 身份锁必须保留；**禁止**为躲超时砍掉原文模块/发型锁 | 可分步：底板 → 贴角色；或换其他直连模型 |
 
 气质锁：`assets/style-lock/knowledge-card-editorial-3x4.png`  
 （不要用长文 `warm-pixel-scene-16x9.png` 当知识卡主锁。）
@@ -82,7 +82,9 @@ FINAL 3:4 + 后盖水印 + QA
 参考图：`clean` + `bust` +（若有）`sheet` + 气质锁（只锁版式，不锁样例身份）。  
 可分步：①信息图底板（弱角色/框）→ ②用 bust/clean edit 贴上讲解动作。
 
-**硬禁令：** 因 Cursor MCP 超时就删短「原文模块 / 发型锁 / 身份包」——超时就换通道、拆步重试，或如实说暂不能交合格图，**不要交付降质版凑数。**
+**通道规则：** 本流程只能在**能够调用生图/编辑模型**的 Agent 上完整执行（如 GPT-Image-2、Nano Banana 2、Imagen 4、Seedream 5.0 Lite、Qwen-Image-3.0 等，以实际可调为准）。有直连时优先直连：例如 Codex 优先内置 GPT-Image-2。Cursor 需通过 MCP 等桥接挂上生图工具（详见 `SKILL.md`「生图能力要求」）。若一次编辑失败，改为单目标编辑或分步生成，但不能删掉原文模块、身份包或发型锁。
+
+**迭代规则：** 每张图生成后必须打开并做视觉 QA。文字、信息密度、角色比例、角色与文字的动作关系、发型任一项不通过，就只修改该项并继续生成；直到通过 `qa-checklist.md` 才能覆盖正式文件名。
 
 ### 5）TEXT RENDERER（二期）
 
@@ -94,7 +96,7 @@ FINAL 3:4 + 后盖水印 + QA
 后盖当前角色 watermark。  
 先做「角色包对照审核」，再过其余必查。
 
-保存：`.jinger-pixel-assets/cards/<slug>/shotlist.md` + `images/`。
+保存：`.jinger-pixel-assets/cards/<slug>/shotlist.md` + `images/`。内置 image-2 的默认生成目录只作为中间产物，最终文件必须复制到项目 `images/`。
 
 ## Shot list 必填（多卡）
 
@@ -102,7 +104,8 @@ FINAL 3:4 + 后盖水印 + QA
 - CONTENT TYPE + LAYOUT CHOICE  
 - HERO / 标题  
 - MODULES + EXACT LABELS（来自原文，可含 1 句短解释，不只三个碎词）  
-- CHARACTER CROP：`bust` / `fullbody` / `multi-mini` + 选择理由（互动/占位）  
+- CHARACTER CROP：`none` / `bust` / `fullbody` / `multi-mini` + 选择理由（互动/占位/职能测试）  
+- LAYOUT MOLD：`cover-hook` / `qa-metaphor` / `wrong-right-tips` / `two-panel` / `steps-flow` / `cta`  
 - CHARACTER ACTION  
 - IDENTITY METHOD：`edit-from-package`（默认）或说明为何例外  
 

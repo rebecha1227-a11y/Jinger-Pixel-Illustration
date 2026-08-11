@@ -235,9 +235,10 @@ Do NOT redesign. Do NOT copy any other sample character from a style-lock image.
 Same recurring IP mascot across the series.
 
 CHARACTER AS VISUAL EXPLAINER
-Demonstrate / explain / point / hold / operate / compare / react.
+The character is optional. If the information table / flow / comparison is self-contained, use no character.
+When present, demonstrate / explain / point / hold / operate / compare / react with one concrete action tied to one text module.
 Never only decorate. Never the same forever laptop pose.
-Crop: bust OR fullbody OR multi-mini — choose what best serves text interaction and layout space for THIS card (stated in CARD CONTENT). Text/modules dominate; character about 1/4–1/3 if single figure. Do NOT fill the poster.
+Crop: none | bust | fullbody | multi-mini — choose what best serves text interaction and layout space for THIS card (stated in CARD CONTENT). Text/modules dominate; a single information-card figure is usually 12%-22% of page height and never fills the poster.
 
 VISUAL STYLE
 Premium retro pixel-art editorial / RPG UI. Feel: "editorial infographic from a beautiful retro indie-game UI."
@@ -272,8 +273,9 @@ HERO / TITLE: […]
 MODULES (from article; each may include one short explanation line):
   - …
 EXACT LABELS: …
-CHARACTER CROP: bust | fullbody | multi-mini
+CHARACTER CROP: none | bust | fullbody | multi-mini
 CROP REASON: […]
+LAYOUT MOLD: cover-hook | qa-metaphor | wrong-right-tips | two-panel | steps-flow | cta
 CHARACTER ACTION: […]
 VISUAL METAPHOR: […]
 KEY TAKEAWAY: […]
@@ -289,6 +291,8 @@ Keep the same confirmed character reference for every image.
 Keep signature features, silhouette, colors/markings, pixel density, outline treatment, and palette logic consistent.
 Only change pose, expression, action, environment, and article-specific objects.
 Every image should feel like another scene from the same pixel-art universe.
+
+For Jinger-v2, lock hair to the confirmed bust as **两侧垂落小侧马尾** (two-side drooping mini side-ponytails): very little hair tied at both top sides, naturally hanging down with soft wavy tips that merge into the lower long wavy hair; upper strawberry-pink/gold fading to deep brown-black tips. No braids, short stiff tufts, buns, high twin tails, or animal ears. Keep the under-eye mole and silver headphones around the neck.
 
 ARTICLE SERIES LOOK:
 - Cover may use a different background color/scene from the body images (same is also OK).

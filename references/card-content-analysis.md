@@ -32,7 +32,7 @@ USER ARTICLE
 3. 提取 **3–5 个知识模块**（多卡系列则分配到各张，每张通常 1–3 个模块 + 必要短解释）  
 4. 确定模块关系：stack / compare / flow / hub / metaphor  
 5. 确定 **VISUAL METAPHOR**  
-6. 确定 **CHARACTER ACTION** 与建议的 **CHARACTER CROP**（bust / fullbody / multi-mini + 理由）  
+6. 确定 **CHARACTER ACTION**、**CHARACTER CROP**（`none` / bust / fullbody / multi-mini + 理由，含职能测试）与 **LAYOUT MOLD**  
 7. 写出 **EXACT LABELS**：要进画面的字，**逐字可追溯到原文**；需要解释句时从原文压缩，禁止同义乱改术语  
 
 ## 输出格式
@@ -49,8 +49,9 @@ RELATIONSHIPS: …
 VISUAL METAPHOR: …
 CHARACTER ROLE: 视觉讲解者
 CHARACTER ACTION: …
-CHARACTER CROP: bust | fullbody | multi-mini
-CROP REASON: （互动 / 占位一句话）
+CHARACTER CROP: none | bust | fullbody | multi-mini
+CROP REASON: （互动 / 占位 / 职能测试一句话）
+LAYOUT MOLD: cover-hook | qa-metaphor | wrong-right-tips | two-panel | steps-flow | cta
 LAYOUT CHOICE: …
 EXACT LABELS: …
   - …
