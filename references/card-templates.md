@@ -19,9 +19,11 @@
 ## Shot list 额外字段
 
 - `SOURCE SECTION`：对应原文哪一节  
-- `LAYOUT MOLD`：上表模具 ID  
+- `LAYOUT MOLD`：`cover-hook` / `definition-dashboard` / `architecture-tree` / `qa-metaphor` / `wrong-right-tips` / `two-panel` / `steps-flow` / `cta`
 - `MODULES` + 短说明（来自原文）  
 - `CHARACTER CROP`：`none` / `bust` / `fullbody` / `multi-mini` + 理由（互动/占位/职能测试）  
+- `CHARACTER SLOT` + `CHARACTER FOOTPRINT` + `CHARACTER BINDINGS`
+- `LOOK LOCK` + `FRAME / SURFACE / TYPE / PANEL CONTRACT` + `DENSITY BAND`
 - `IDENTITY METHOD`：默认 `edit-from-package`  
 
 ## 图内文字预算
@@ -34,4 +36,4 @@
 ## 场景与色
 
 几乎纯色暖米白 + RPG/像素 UI；对齐 `knowledge-card-editorial-3x4.png`。  
-色纪律见 `card-style-system.md`（单强调色）。不要复杂房间剧场。
+色纪律见 `card-style-system.md`（一个低饱和主强调色家族 + 可选 `<3%` 语义微强调）。不要复杂房间剧场。

@@ -7,6 +7,8 @@
 目标气质对齐：`assets/style-lock/knowledge-card-editorial-3x4.png`  
 （米白暖棕底 + 复古像素 + RPG/独立游戏 UI 模块 + 信息模块化；只学版式/密度/色纪律，不学样例角色脸）
 
+完整黄金样张合同见 `card-gold-standard.md`。同一系列必须锁住：一条连续外框、同一纸面、同一字体分工、同一模块边线语言；不能只写“复古像素”就让模型自由重做视觉系统。
+
 长文封面锁用 `assets/style-lock/warm-pixel-scene-16x9.png`；长文正文锁用 `assets/style-lock/article-body-editorial-16x9.png`。  
 知识卡不要混用长文锁。
 
@@ -35,24 +37,32 @@ Clothing folds = deliberate pixel shading. Edges = controlled stair-stepping.
 
 ## 色彩纪律（硬约束）
 
-知识卡用**克制双色逻辑**，不要每张换一盘彩虹：
+知识卡用**一个主强调色家族 + 极少语义微强调**，不要每张换一盘彩虹：
 
 | 层级 | 用法 | 示例 |
 |---|---|---|
 | 底 | 几乎纯色暖米白 / 象牙 | `#F5F0E8` 一带 |
 | 结构 | 深棕 / 炭灰：标题、边框、模块线、正文 | cocoa / espresso / `#2B2B2B` |
-| 强调 | **整张只选 1 个强调色** | 箭头、关键词高亮、关键 UI；Jinger 套图可从角色固有色里选草莓粉发色 **或** 奶油毛衣色当强调，**不要两个一起抢** |
+| 主强调 | **整张只选 1 个低饱和强调色家族** | 琥珀金/蜂蜜黄用于文件夹、节点、序号、箭头、关键 UI |
+| 语义微强调 | 可选，总面积 `<3%` | 只为 VS、重点下划线、状态差异服务；如 03 的一小段桃粉线，不得铺满模块 |
 | 灰 | 可选弱底块，不算第二套品牌强调色 | 浅灰模块底 |
 
-禁止：霓虹第三色、每张换高饱和装饰色、复杂渐变背景。  
+禁止：把语义微强调扩成第二套主色、霓虹第三色、每张换高饱和装饰色、复杂渐变背景。
 角色服装/头发按角色包固有色上色（那是身份，不是「又开一盘强调色」）。
 
 写入 prompt 时可加：
 
 ```text
-COLOR DISCIPLINE: cream/ivory background + dark brown/black structure text and frames.
-Exactly ONE accent color for emphasis (arrows/keywords/key UI). No extra saturated decoration colors.
+COLOR DISCIPLINE: cream/ivory background + dark cocoa structure text and frames.
+Use one dominant muted amber/gold accent family. One optional semantic micro-accent may occupy less than 3% of the canvas. No extra saturated decoration colors.
 ```
+
+## 边框、纸面与字体合同
+
+- **外框**：整张只有一条连续的圆角像素外框；深 espresso 外线 + 中棕内线 + 暖色高光，厚度和圆角在系列里固定。不能每个页面换边框，也不能把页面切成浮动海报卡。
+- **纸面**：框内是一块平整暖象牙纸面，允许非常轻的纸纹和边缘阴影；禁止渐变舞台光、房间或散景。
+- **字体分工**：主标题/英文关键词用复古像素 display；模块标题用清楚粗体；中文解释用高可读无衬线。不要把全部中文强制像素化。
+- **模块线**：实体细线用于主结构和容器；虚线只用于注释/次级说明；圆角、描边、阴影深度保持一致。
 
 ## 背景（静儿硬偏好）
 

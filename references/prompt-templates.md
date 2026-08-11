@@ -215,7 +215,7 @@ TEXT: large pixel lettering. 5–12 text blocks max. Write exact_labels exactly.
 
 ## 知识卡片 3:4（固定层 + 内容层）
 
-细则：`card-workflow.md` 流水线；`card-content-analysis.md` / `card-layout-system.md` / `card-style-system.md` / `card-character-system.md`。  
+细则：`card-workflow.md` 流水线；`card-content-analysis.md` / `card-gold-standard.md` / `card-layout-system.md` / `card-style-system.md` / `card-character-system.md`。
 气质锁：`assets/style-lock/knowledge-card-editorial-3x4.png`（只锁版式气质；身份以角色包为准）。
 
 默认 **edit-from-package**：把角色包 bust/clean 当输入图，只改姿势与道具，再嵌入版式。  
@@ -238,19 +238,28 @@ CHARACTER AS VISUAL EXPLAINER
 The character is optional. If the information table / flow / comparison is self-contained, use no character.
 When present, demonstrate / explain / point / hold / operate / compare / react with one concrete action tied to one text module.
 Never only decorate. Never the same forever laptop pose.
-Crop: none | bust | fullbody | multi-mini — choose what best serves text interaction and layout space for THIS card (stated in CARD CONTENT). Text/modules dominate; a single information-card figure is usually 12%-22% of page height and never fills the poster.
+Crop: none | bust | fullbody | multi-mini — choose what best serves text interaction and layout space for THIS card (stated in CARD CONTENT).
+Reserve the CHARACTER SLOT before rendering the figure. Judge size by painted footprint and text clearance, not height alone: a fullbody figure may be 30%-42% tall only when narrow (usually <=16%-18% wide) in a reserved edge column, about 5%-8% painted footprint; a bust is about 4%-7%; multi-mini total footprint <=18%. Never shrink or crowd text to fit the character.
 
 VISUAL STYLE
 Premium retro pixel-art editorial / RPG UI. Feel: "editorial infographic from a beautiful retro indie-game UI."
 PIXEL ART QUALITY CONTROL: construct as pixel art from the start; no anime-then-filter. Intentional pixel clusters in hair/eyes/clothes/edges.
 
 COLOR SYSTEM
-Warm ivory/cream, beige, cocoa, espresso, muted peach, dusty pink, gray. Anchor on character colors. Avoid neon.
+Flat warm ivory/cream paper, dark cocoa/espresso structure, one muted amber/gold accent family. One optional semantic micro-accent may occupy less than 3% of the canvas. Character identity colors do not become layout accents. Avoid neon.
+
+GOLD STANDARD LOOK CONTRACT
+Copy only the visual grammar of the approved LOOK LOCK image(s), never their character identity, wording, or pose.
+Use one continuous rounded pixel outer frame: espresso outer line, mid-brown inner line, warm highlight. Keep frame thickness and corner treatment consistent across the series.
+Inside the frame, use one flat warm ivory paper surface with minimal texture.
+Typography roles are fixed: retro pixel display for hero title/key English term; bold clean module labels; highly readable Chinese sans body text.
+Primary containers use consistent solid hairline borders; secondary annotations may use dashed borders. Keep corner radius, line weight, and shallow pixel shadow consistent.
 
 LAYOUT SYSTEM
 Hierarchy: HERO TITLE → short intro → main modules (title + short explanation each when needed) → character interaction → key takeaway.
 1–5 modules (series) or up to 4–7 (single deep card). Information-dense like a polished editorial card — NOT three sparse lines + huge character.
 Choose layout by content type. RPG UI frames, panels, arrows, folder trees OK.
+Build the text grid and vertical bands first. Place the character only in the declared reserved slot. Every character instance belongs to one module, comparison side, or takeaway band.
 
 TYPOGRAPHY & TEXT ACCURACY
 Large pixel type for titles/key English terms. Readable sans for Chinese.
@@ -275,7 +284,16 @@ MODULES (from article; each may include one short explanation line):
 EXACT LABELS: …
 CHARACTER CROP: none | bust | fullbody | multi-mini
 CROP REASON: […]
-LAYOUT MOLD: cover-hook | qa-metaphor | wrong-right-tips | two-panel | steps-flow | cta
+CHARACTER SLOT: none | edge-narrow-column | module-cell | takeaway-band | […]
+CHARACTER FOOTPRINT: none | fullbody narrow 5%-8% | bust 4%-7% | multi-mini total <=18%
+CHARACTER BINDINGS: […]
+LOOK LOCK: bundled | first-approved | approved-card paths
+FRAME CONTRACT: continuous rounded pixel frame; espresso outer + brown inner + warm highlight
+SURFACE CONTRACT: flat warm ivory paper; minimal texture
+TYPE CONTRACT: pixel display title + bold module labels + readable Chinese sans body
+PANEL CONTRACT: solid primary containers + dashed secondary annotations; consistent corners/lines
+DENSITY BAND: low | medium | high; vertical bands: […]
+LAYOUT MOLD: cover-hook | definition-dashboard | architecture-tree | qa-metaphor | wrong-right-tips | two-panel | steps-flow | cta
 CHARACTER ACTION: […]
 VISUAL METAPHOR: […]
 KEY TAKEAWAY: […]

@@ -285,3 +285,19 @@ ChatGPT 重新设计了四个 md（character-spec / concept-visual-language / pr
 
 ### 相关引用
 - `SKILL.md`、`references/character-spec.md`、`references/prompt-templates.md`、`references/qa-checklist.md`、`references/style-dna.md`、`LICENSE-ASSETS`、`.gitignore`（已忽略 `.jinger-pixel-assets/`）
+
+## 2026-08-11
+
+### 问题
+03-concept 与 04-folder 是当前最稳定的成品：边框、背景、IP 身份和信息密度像同一套。为什么 03 即使有多个角色仍不乱，04 的全身角色也不抢字？怎样让 image-2 后续尽量维持这两张的质量？
+
+### 答案核心
+- 真正应锁的是“视觉语法”，不是某张固定模板：连续三层像素外框、平整暖象牙纸面、深咖结构线、琥珀金主强调、像素主标题 + 清晰中文正文、稳定的模块边线。
+- 03 是高密度 `definition-dashboard`：定义、三模块、对比带、结论带、页脚分成独立纵向 band；多个角色分别绑定一个 band，身份相同但动作不同，所以不会成为重复贴纸。
+- 04 是中密度 `architecture-tree`：树线承担主骨架，文件夹名牌与说明框逐行配对，底部建议框收束；全身角色虽高但很窄，待在右下预留列，实际着色面积很小。
+- 旧的“角色占页面高度 12%–22%”会误杀 04 这种好构图，也无法解释 03。改为 `CHARACTER SLOT + FOOTPRINT + BINDINGS`：先排字留槽，再按实际着色占地和文字净空控制角色。
+- 系列生成采用双阶段 LOOK LOCK：通用用户先用内置风格锁，首张通过后升为主锁；第二张不同结构通过后作为辅助锁。作者当前系列直接用 03 + 04 双锁，只复制视觉语法，不复制文字、角色姿势或内容。
+- image-2 每张出图后按单张与系列两层 QA；若边框、纸面、字体分工、模块密度、身份或角色互动任一失败，只改失败项继续出图，PASS 后才覆盖正式文件。
+
+### 相关引用
+- `references/card-gold-standard.md`、`references/card-workflow.md`、`references/card-layout-system.md`、`references/card-character-system.md`、`references/prompt-templates.md`、`references/qa-checklist.md`

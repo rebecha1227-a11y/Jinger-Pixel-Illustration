@@ -32,8 +32,9 @@ USER ARTICLE
 3. 提取 **3–5 个知识模块**（多卡系列则分配到各张，每张通常 1–3 个模块 + 必要短解释）  
 4. 确定模块关系：stack / compare / flow / hub / metaphor  
 5. 确定 **VISUAL METAPHOR**  
-6. 确定 **CHARACTER ACTION**、**CHARACTER CROP**（`none` / bust / fullbody / multi-mini + 理由，含职能测试）与 **LAYOUT MOLD**  
-7. 写出 **EXACT LABELS**：要进画面的字，**逐字可追溯到原文**；需要解释句时从原文压缩，禁止同义乱改术语  
+6. 确定 **LAYOUT MOLD** 与 **DENSITY BAND**，并写明 **LOOK / FRAME / SURFACE / TYPE / PANEL CONTRACT**
+7. 确定 **CHARACTER ACTION**、**CHARACTER CROP**、**CHARACTER SLOT**、**CHARACTER FOOTPRINT** 与 **CHARACTER BINDINGS**（`none` / bust / fullbody / multi-mini + 理由，含职能测试）
+8. 写出 **EXACT LABELS**：要进画面的字，**逐字可追溯到原文**；需要解释句时从原文压缩，禁止同义乱改术语
 
 ## 输出格式
 
@@ -51,7 +52,16 @@ CHARACTER ROLE: 视觉讲解者
 CHARACTER ACTION: …
 CHARACTER CROP: none | bust | fullbody | multi-mini
 CROP REASON: （互动 / 占位 / 职能测试一句话）
-LAYOUT MOLD: cover-hook | qa-metaphor | wrong-right-tips | two-panel | steps-flow | cta
+CHARACTER SLOT: none | edge-narrow-column | module-cell | takeaway-band | …
+CHARACTER FOOTPRINT: none | fullbody narrow 5%–8% | bust 4%–7% | multi-mini total <=18%
+CHARACTER BINDINGS: 手/道具/视线分别绑定哪个文字模块
+LOOK LOCK: bundled | first-approved | approved-card paths
+FRAME CONTRACT: continuous rounded pixel frame; espresso outer + brown inner + warm highlight
+SURFACE CONTRACT: flat warm ivory paper; minimal texture
+TYPE CONTRACT: pixel display title + bold module labels + readable Chinese sans body
+PANEL CONTRACT: solid primary containers + dashed secondary annotations; consistent corners/lines
+DENSITY BAND: low | medium | high（并说明纵向 band）
+LAYOUT MOLD: cover-hook | definition-dashboard | architecture-tree | qa-metaphor | wrong-right-tips | two-panel | steps-flow | cta
 LAYOUT CHOICE: …
 EXACT LABELS: …
   - …
